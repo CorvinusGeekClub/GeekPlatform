@@ -1,4 +1,7 @@
 {
+  "runtimes": {
+    "win10-x64": {}
+  },
   "dependencies": {
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview2-final",
