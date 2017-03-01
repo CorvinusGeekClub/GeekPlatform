@@ -1,5 +1,7 @@
 ﻿
-
+body {
+    color: #727072;
+}
 
 .doboz{
   background-color: #FFF;
@@ -74,4 +76,44 @@ padding: 10px;
   margin-top:25px;
 }
 
+
+hr {
+	border-top: 2px solid;
+}
+
+.panel-profile {
+	border: 2px solid #727072;
+	border-radius: 0;
+}
+
+.panel-profile .panel-heading {
+	background: #c0392b;
+	color: #fff;
+	border-radius: 0;
+	font-size: 24px;
+}
+
+.icon-group p {
+	display: inline-block;
+}
+
+.profile-pic-big {
+	text-align: center;
+	font-size: 25vmin;
+}
+
+.course-block {
+	padding-left: 60px;
+	padding-right: 60px;
+	text-align: center;
+}
+
+i.fa.fa-3x.fa-book {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+i.fa.fa-circle, i.fa.fa-circle-o {
+	padding-left: 10px;
+	padding-right: 10px;
 }
