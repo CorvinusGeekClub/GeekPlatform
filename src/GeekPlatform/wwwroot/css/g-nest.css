@@ -1,0 +1,251 @@
+html, body {
+    margin: 0;
+}
+
+html, body, .container-fluid, .row {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.wrapper {
+    min-height: 100%;
+    padding: 87px 0 59px 0;
+    position: relative;
+}
+
+
+/*wrapper és navbar-toggle igazítása a sidebar viselkedéséhez*/
+
+@media (min-width: 1px) {
+    .navbar-toggle {
+        display: block !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .wrapper {
+        padding: 87px 0 59px 300px;
+    }
+    .navmenu {
+        padding-top: 0;
+    }
+    .g-nest-navbar-toggle {
+        display: none !important;
+    }
+}
+
+.g-nest-header {
+    height: 87px;
+    position: relative;
+    top: 0;
+}
+
+.g-nest-header .header-platform-name {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+.g-nest-header .header-platform-name a {
+    color: #333333 !important;
+}
+
+.g-nest-header .header-platform-name a:hover, .g-nest-header .header-platform-name a:hover {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+.g-nest-header .platform-name-text {
+    margin-left: 15px;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.g-nest-header .username-text {}
+
+.g-nest-header .header-icons {
+    height: 86px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.g-nest-header .header-icons a {
+    color: #333333 !important;
+}
+
+.g-nest-header .header-icons a:hover, .g-nest-header .header-icons a:hover {
+    color: #000000 !important;
+}
+
+.g-nest-header .g-nest-icon {
+    margin-left: 15px;
+}
+
+
+/*ikonméretek*/
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+
+/*fejléc ikonméretek és platformnév kezelése a képernyő kicsinyítésekor*/
+
+@media (max-width: 693px) {
+    .material-icons.xs-18 {
+        font-size: 18px;
+    }
+    .material-icons.xs-24 {
+        font-size: 24px;
+    }
+    .g-nest-header .header-icons a {
+        height: 24px;
+    }
+    .g-nest-header .header-icons a:hover, .g-nest-header .header-icons a:focus {
+        height: 24px;
+    }
+    .g-nest-header .platform-name-text {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+  .g-nest-header .platform-name-text {
+    display: none;
+  }
+}
+
+
+/*a felhasználónév eltüntetése, mikor a képernyő kicsi, ilyenkor az ikon helyettesíti*/
+
+@media (max-width: 693px) {
+    .g-nest-header .username-text {
+        display: none;
+    }
+}
+
+.g-nest-navbar-toggle {}
+
+.g-nest-container {
+    top: 87px;
+    left: 300px;
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.g-nest-navmenu {
+    top: 87px !important;
+    bottom: 59px !important;
+    background-color: #c0392b !important;
+    border: 0 !important;
+    -webkit-box-shadow: 6px 0px 10px -2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 6px 0px 10px -2px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 0px 10px -2px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+}
+
+/*navmenu takarja el a footert, ha a képernyő nem elég magas*/
+@media (max-height: 700px) {
+  .g-nest-navmenu {
+    bottom: 0 !important;
+  }
+}
+
+/*de ne takarja el, ha még elég széles*/
+@media (min-width: 992px) {
+  .g-nest-navmenu {
+    bottom: 59px !important;
+  }
+}
+
+ /*menüpontok formázása (jasny-bootstrap paramétereinek felülírása, az eredeti fájl selectorai bővebbek)*/
+.nav > li > a {
+  text-align: center;
+  margin: 0 0 8px 0 !important;
+}
+
+.navmenu-default .navmenu-nav > li > a {
+  color: #ffffff !important;
+  background-color: #c64d41;
+  border-left: 5px solid #ffffff;
+
+}
+
+.navmenu-default .navmenu-nav > li > a:hover, .navmenu-default .navmenu-nav > li > a:focus {
+  background-color: #c64d41 !important;
+  border-left: 5px solid #f44e3d;
+}
+
+.navmenu-default .navmenu-nav > .active > a {
+  background-color: #c64d41 !important;
+border-left: 5px solid #f44e3d;
+}
+
+.g-nest-sidebar-container {}
+
+.g-nest-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 59px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e7e7e7;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    overflow: auto;
+}
+
+
+
+.copyright {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.dev-by {
+    height: 58px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-end;
+    align-items: flex-end;
+}
+
+.dev-by-text {
+    margin-right: 15px;
+}
+
+.gc-logo {
+    text-align: right;
+    height: 100%;
+}
+
+.gc-logo-img {}
