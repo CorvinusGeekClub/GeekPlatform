@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeekPlatform.Controllers
 {
-    public class Jelentkezes : Controller
+    public class JelentkezesController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
