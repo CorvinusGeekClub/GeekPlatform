@@ -3,66 +3,90 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GeekPlatform</title>
-
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+    <title>G-Nest</title>
+    <script src="src\jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/g-nest.css">
+    <link rel="stylesheet" href="lib\bootstrap\dist\css\bootstrap.min.css">
+    <link rel="stylesheet" href="lib\jasny-bootstrap\css\jasny-bootstrap.min.css">
+    <link rel="icon" href="images\favicon\favicon-16x16.png">
+    <script src="~/lib/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">GeekPlatform</a>
+    <div class="wrapper">
+        <!--oldalsó menü-->
+        <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm g-nest-navmenu" id="sidemenu">
+            <ul class="nav navmenu-nav">
+                <li class="active"><a asp-controller="Home" asp-action="Index">Főoldal</a></li>
+                <li><a asp-controller="Oktatas" asp-action="Index">Oktatás</a></li>
+                <li><a asp-controller="Kurzusaim" asp-action="Index">Kurzusaim</a></li>
+                <li><a asp-controller="Jelentkezes" asp-action="Index">Jelentkezés</a></li>
+                <li><a asp-controller="Tudasbazis" asp-action="Index">Tudásbázis</a></li>
+                <li><a href="https://corvinusgeekclub.slack.com">Slack</a></li>
+                <li><a asp-controller="Galeria" asp-action="Index">Galéria</a></li>
+                <li><a asp-controller="Esemenyek" asp-action="Index">Események</a></li>
+            </ul>
+        </div>
+        <!--fejléc & sidebar-icon-->
+        <div class="navbar navbar-default navbar-fixed-top g-nest-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-6 header-platform-name">
+                        <button type="button" class="navbar-toggle g-nest-navbar-toggle" data-toggle="offcanvas" data-target="#sidemenu">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a asp-controller="Home" asp-action="Index"><img src="images\temp-logo_w_text.png" alt="A g-nest logója"></a>
+                        <a asp-controller="Home" asp-action="Index"><div class="platform-name-text">G-Nest</div></a>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-6 header-icons">
+                        <a href="#"><span class="username-text">Felhasználónév</span></a>
+                        <a href="#"><i class="material-icons xs-24 md-48 g-nest-icon">account_circle</i></a>
+                        <a href="#"><i class="material-icons xs-24 md-36 g-nest-icon">notifications</i></a>
+                        <a href="#"><i class="material-icons xs-24 md-36 g-nest-icon">settings</i></a>
+                        <a href="#"><i class="material-icons xs-24 md-36 g-nest-icon">exit_to_app</i></a>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
+        </div>
+        <!--container-->
+        <div class="container-fluid g-nest-container">
+            <div class="row">
+                <div class="container-fluid g-nest-container">
+                    <!--EZEN BELÜLRE KELL RAKNI A TÖBBI LAYOUT-OT-->
+                    @RenderBody()
+
+
+
+
+                    
+
+
+
+                    <!--EDDIG TART A LAYOUT-OK HELYE-->
+                </div>
+            </div>
+
+        </div>
+        <!--lábléc-->
+        <div class="g-nest-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-xs-6 copyright">
+                        Copyright © 2017 Corvinus Geek Club
+                    </div>
+                    <div class="col-md-6 col-xs-6 gc-logo">
+                        <div class="dev-by">
+                            <div class="dev-by-text">Developed by</div>
+                            <a href="https://geekclub.hu/"><img class="gc-logo-img" src="images\cgc_logo.png" alt="A Corvinus Geek Club logója"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - GeekPlatform</p>
-        </footer>
-    </div>
-
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-
-    @RenderSection("scripts", required: false)
 </body>
 </html>
