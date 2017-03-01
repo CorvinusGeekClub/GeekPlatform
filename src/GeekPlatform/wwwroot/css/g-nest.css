@@ -336,3 +336,31 @@ border-left: 5px solid #f44e3d;
   color: #939393;
   text-decoration: none;
 }
+
+/*Akítv kurzus*/
+
+.kurzushet{
+  padding: 5px 0px;
+}
+.tartalom{
+  background-color:rgb(241, 240, 241);
+  padding: 6px 40px;
+
+}
+.fejlec{
+  padding: 3px 20px;
+  background-color: rgb(81, 117, 118);
+  color: #FFF;
+}
+
+img{height:16px;
+
+margin-right:20px;
+}
+
+hr{
+  border-color: #BBB;
+}
+.jobb{
+  margin-top: 25px;
+}
