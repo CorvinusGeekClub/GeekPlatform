@@ -57,6 +57,10 @@ body {
     color: #333333 !important;
 }
 
+.header-platform-name img{
+    height: 68px;
+}
+
 .g-nest-header .header-platform-name a:hover, .g-nest-header .header-platform-name a:hover {
     color: #000000 !important;
     text-decoration: none !important;
@@ -240,6 +244,10 @@ border-left: 5px solid #f44e3d;
 
 .dev-by-text {
     margin-right: 15px;
+}
+
+.dev-by img{
+    height: 40px;
 }
 
 .gc-logo {
