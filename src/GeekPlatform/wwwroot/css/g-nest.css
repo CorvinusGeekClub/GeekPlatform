@@ -249,3 +249,91 @@ border-left: 5px solid #f44e3d;
 }
 
 .gc-logo-img {}
+
+/*kurzusaim*/
+
+.my-courses-text {
+    font-size: 40px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.panel-course {
+    border-radius: 0 !important;
+    border: 0;
+    background-color: #ffffff;
+    /*opacity: 0.8;*/ /*ha lesz háttérkép*/
+}
+
+.panel-course-header {
+    font-size: 16pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-active-course-header {
+    background-color: #c0392b !important;
+    color: #ffffff !important;
+    border-radius: 0 !important;
+}
+
+.panel-completed-course-header {
+    background-color: #939393 !important;
+    color: #ffffff !important;
+    border-radius: 0 !important;
+}
+
+.panel-course-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+}
+
+.panel-course-col-right-border {
+    border-right: 1px solid #999898;
+}
+
+.panel-course-col-no-border {
+    border: 0 !important;
+}
+
+.panel-course-col-header {
+  font-size: 16pt;
+}
+
+.panel-course-col-next-class {
+  font-style: italic;
+  color: #3498db;
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.icon-blue {
+  color: #3498db;
+}
+
+.icon-blue a {
+  color: #3498db;
+}
+
+.icon-blue a:focus, a:hover {
+  color: #939393;
+  text-decoration: none;
+}
