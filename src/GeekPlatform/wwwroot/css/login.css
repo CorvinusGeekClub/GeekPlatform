@@ -1,0 +1,80 @@
+﻿@font-face {
+    font-family: Dual;
+    src: url("/fonts/Dual-300.ttf");
+}
+
+body{
+    background-image: url("/images/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Helvetica, sans-serif;
+    color: #FFF;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h1{
+    font-family: "Dual", Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 84px;
+    margin-top: 140px;
+    margin-bottom: 120px;
+}
+
+form{
+    width: 480px;
+    position: relative;
+}
+
+input{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 60px;
+    font-size: 16px;
+}
+
+input[type="text"], input[type="password"]{
+    color: #444;
+    font-style: italic;
+    background-color: #FFF;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: 15px 50%;
+    border-style: none;
+    padding: 5px;
+    padding-left: 50px;
+}
+
+input[type="text"]{
+    border-bottom: 1px solid #888;
+    background-image: url("/images/user.png");
+}
+
+input[type="password"]{
+    background-image: url("/images/pass.png");
+}
+
+input[type="submit"]{
+    margin-top: 16px;
+    background-color: #64c133;
+    border-style: none;
+    text-transform: uppercase;
+    color: #FFF;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#pw-reset{
+    display: block;
+    padding: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-style: italic;
+    color: #FFF;
+}

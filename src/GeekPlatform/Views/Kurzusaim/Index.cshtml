@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Kurzusaim";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="my-courses-text">Kurzusaim</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default panel-course panel-active-course">
+            <div class="panel-heading panel-course-header panel-active-course-header">
+                <span class="active-course-header-text">Aktív kurzus neve</span>
+                <i class="material-icons md-36">school</i>
+            </div>
+            <div class="panel-body panel-course-body panel-active-course-body">
+                <div class="row">
+                    <div class="col-xs-5 panel-course-col panel-course-col-right-border">
+                        <div class="panel-course-col-header">Aktuális</div>
+                        <div class="panel-course-col-text">Aktuális témakör</div>
+                    </div>
+                    <div class="col-xs-5 panel-course-col panel-course-col-right-border">
+                        <div class="panel-course-col-header">Következő óra</div>
+                        <div class="panel-course-col-text">Következő téma</div>
+                        <div class="panel-course-col-next-class">YYYY. MM. DD.</div>
+                    </div>
+                    <div class="col-xs-2 panel-course-col panel-course-col-no-border">
+                        <i class="material-icons md-36 icon-blue"><a asp-controller="KurzusAdatok" asp-action="Passziv">home</a></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default panel-course panel-completed-course">
+            <div class="panel-heading panel-course-header panel-completed-course-header">
+                <span class="completed-course-header-text">Elvégzett kurzus neve</span>
+
+                <i class="material-icons md-36">done</i>
+            </div>
+            <div class="panel-body panel-course-body panel-completed-course-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu nisi, vestibulum in lectus eu, blandit congue nunc. Nunc fringilla blandit sapien, eget maximus metus aliquet ultrices. Fusce aliquet nibh ac ornare pulvinar. Curabitur scelerisque
+                mauris eu ante auctor, nec egestas lorem bibendum. Aliquam non sodales ligula, in mollis ex. Nam pulvinar elementum metus, vel ultricies lectus rhoncus a. Nam accumsan, tortor in mattis finibus, ante lacus fringilla neque, ut porttitor
+                lorem dolor vitae enim. Fusce auctor elit eget purus interdum viverra. Etiam vel sodales eros.
+            </div>
+        </div>
+    </div>
+</div>
