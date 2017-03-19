@@ -58,4 +58,10 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Profile.sql" />
+    <Build Include="Course.sql" />
+    <Build Include="Course_Enrollment.sql" />
+    <Build Include="Course_News.sql" />
+  </ItemGroup>
 </Project>
