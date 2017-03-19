@@ -63,5 +63,10 @@
     <Build Include="Course.sql" />
     <Build Include="Course_Enrollment.sql" />
     <Build Include="Course_News.sql" />
+    <Build Include="Course_Thematics.sql" />
+    <Build Include="Competency.sql" />
+    <Build Include="Member_Competency.sql" />
+    <Build Include="Homework_Upload.sql" />
+    <Build Include="Thematics_Attachment.sql" />
   </ItemGroup>
 </Project>
