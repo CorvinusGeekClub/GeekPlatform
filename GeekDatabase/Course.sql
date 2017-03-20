@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [dbo].[Course] (
     [Course_Id]         INT            NOT NULL IDENTITY,
+    [Course_Name]       NVARCHAR (MAX) NOT NULL,
     [Description_Short] NVARCHAR (200) NOT NULL,
     [Description_Long]  NVARCHAR (MAX) NOT NULL,
     [Icon_Large_URL]    NVARCHAR (MAX) NOT NULL,

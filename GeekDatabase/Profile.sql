@@ -8,7 +8,7 @@
     [Major]            NVARCHAR (30)  NULL,
     [Workplace]        NVARCHAR (40)  NULL,
     [Email]            NVARCHAR (40)  NOT NULL,
-    [Phone]            NVARCHAR (11)  NOT NULL,
+    [Phone]            NVARCHAR (12)  NOT NULL,
     [Slack]            NVARCHAR (40)  NOT NULL,
     [Skype]            NVARCHAR (40)  NULL,
     [Address]          NVARCHAR (60)  NOT NULL,
