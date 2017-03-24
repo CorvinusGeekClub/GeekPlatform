@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FCBC80D5-3498-40CB-AE17-2A019D2BEF6A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekPlatform", "src\GeekPlatform\GeekPlatform.csproj", "{6320B5E1-279E-4D61-A287-F78335A402E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE} = {A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}
+	EndProjectSection
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GeekDatabase", "GeekDatabase\GeekDatabase.sqlproj", "{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}"
 EndProject
