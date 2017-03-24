@@ -57,7 +57,7 @@ namespace GeekPlatform
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseApplicationInsightsExceptionTelemetry();
+            // app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
 
