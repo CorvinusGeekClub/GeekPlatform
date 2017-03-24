@@ -5,7 +5,7 @@
 	[Week_Number] TINYINT NOT NULL,
 	[Profile_Id]	INT NOT NULL,
 	[Upload_URL]	NVARCHAR(MAX) NOT NULL,
-	[Upload_Date]	DATE NOT NULL,
+	[Upload_DateTime]	DATETIME2 NOT NULL,
 	[Comment]	NVARCHAR(MAX) NOT NULL, 
     CONSTRAINT [FK_Homework_Upload_ToCourse_Thematics] FOREIGN KEY ([Course_Id], [Week_Number]) REFERENCES [Course_Thematics]([Course_Id],[Week_Number]),
 	CONSTRAINT [FK_Homework_Upload_ToProfile] FOREIGN KEY ([Profile_Id]) REFERENCES [Profile]([Profile_Id])
