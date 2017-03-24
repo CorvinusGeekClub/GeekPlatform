@@ -4,7 +4,7 @@
 	[Course_Id]	INT NOT NULL,
 	[Week_Number] TINYINT NOT NULL,
 	[Profile_Id]	INT NOT NULL,
-	[Upload_URL]	NVARCHAR(MAX) NOT NULL,
+	[Upload_FileName]	NVARCHAR(128) NOT NULL,
 	[Upload_DateTime]	DATETIME2 NOT NULL,
 	[Comment]	NVARCHAR(MAX) NOT NULL, 
     [Is_Active] BIT NOT NULL, 
