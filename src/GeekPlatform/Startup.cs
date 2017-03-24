@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 namespace GeekPlatform
 {
@@ -31,6 +32,23 @@ namespace GeekPlatform
 
         public IConfigurationRoot Configuration { get; }
 
+
+        public bool IsServerConnected()
+        {
+            using (var l_oConnection = new SqlConnection(Configuration.GetConnectionString("defaultConnection")))
+            {
+                try
+                {
+                    l_oConnection.Open();
+                    return true;
+                }
+                catch (SqlException)
+                {
+                    return false;
+                }
+            }
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -40,9 +58,10 @@ namespace GeekPlatform
             services.AddMvc();
 
             services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>( options => {
-                string envstring = Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString", null);
-                options.UseSqlServer(envstring ?? Configuration.GetConnectionString("GeekDatabase"));
+                // string envstring = Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString", null);
+                options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +69,9 @@ namespace GeekPlatform
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            ILogger logger = loggerFactory.CreateLogger<Startup>();
+            logger.LogCritical("db starting");
+            logger.LogCritical(IsServerConnected().ToString());
 
             app.UseApplicationInsightsRequestTelemetry();
 
