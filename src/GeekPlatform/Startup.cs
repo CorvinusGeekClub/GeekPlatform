@@ -40,7 +40,7 @@ namespace GeekPlatform
             services.AddMvc();
 
             services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>( options => 
-                options.UseSqlServer(Configuration.GetConnectionString("GeekDatabase"))
+                options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"))
                 );
         }
 
