@@ -5,5 +5,6 @@
 	[Is_Homework]	BIT	NOT NULL,
 	[Attachment_URL]	NVARCHAR(MAX)	NOT NULL,
 	[Description]	NVARCHAR(MAX)	NOT NULL, 
+    [Is_Active] BIT NOT NULL, 
     CONSTRAINT [FK_Thematics_Attachment_ToCourse_Thematics] FOREIGN KEY ([Course_Thematics_Id]) REFERENCES [Course_Thematics]([Course_Thematics_Id])
 );
