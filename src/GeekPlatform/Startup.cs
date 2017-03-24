@@ -39,9 +39,10 @@ namespace GeekPlatform
 
             services.AddMvc();
 
-            services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>( options => 
-                options.UseSqlServer(Configuration.GetConnectionString("GeekDatabase"))
-                );
+            services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>( options => {
+                string envstring = Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString", null);
+                options.UseSqlServer(envstring ?? Configuration.GetConnectionString("GeekDatabase"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
