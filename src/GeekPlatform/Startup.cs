@@ -61,10 +61,9 @@ namespace GeekPlatform
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            if (!env.IsProduction())
-            {
-                Models.SeedData.Initialize(app.ApplicationServices);
-            }
+#if RESET_DB
+            Models.SeedData.Initialize(app.ApplicationServices);
+#endif
 
             // app.UseApplicationInsightsExceptionTelemetry();
 

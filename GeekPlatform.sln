@@ -11,10 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekPlatform", "src\GeekPla
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug - Reset DB|Any CPU = Debug - Reset DB|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6320B5E1-279E-4D61-A287-F78335A402E9}.Debug - Reset DB|Any CPU.ActiveCfg = Debug - Reset DB|Any CPU
+		{6320B5E1-279E-4D61-A287-F78335A402E9}.Debug - Reset DB|Any CPU.Build.0 = Debug - Reset DB|Any CPU
 		{6320B5E1-279E-4D61-A287-F78335A402E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6320B5E1-279E-4D61-A287-F78335A402E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6320B5E1-279E-4D61-A287-F78335A402E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
