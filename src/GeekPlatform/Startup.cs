@@ -47,7 +47,13 @@ namespace GeekPlatform
                 options.UseSqlServer(string.IsNullOrEmpty(envstring) ? Configuration.GetConnectionString("GeekDatabase") : envstring);
             });
 
-            services.AddIdentity<Profile, IdentityRole<int>>()
+            services.AddIdentity<Profile, IdentityRole<int>>(options => {
+                options.Password.RequiredLength = 8;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            })
                 .AddEntityFrameworkStores<GeekDatabaseContext, int>()
                 .AddDefaultTokenProviders();
         }
