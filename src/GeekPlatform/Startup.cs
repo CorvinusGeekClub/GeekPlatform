@@ -40,8 +40,8 @@ namespace GeekPlatform
             services.AddMvc();
 
             services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>( options => {
-                string envstring = Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString", null);
-                options.UseSqlServer(envstring ?? Configuration.GetConnectionString("GeekDatabase"));
+                string envstring = Configuration.GetConnectionString("defaultConnection");
+                options.UseSqlServer(string.IsNullOrEmpty(envstring) ? Configuration.GetConnectionString("GeekDatabase") : envstring);
             });
         }
 
