@@ -39,7 +39,7 @@ namespace GeekPlatform
 
             services.AddMvc();
 
-            services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>( options => {
+            services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>(options => {
                 string envstring = Configuration.GetConnectionString("defaultConnection");
                 options.UseSqlServer(string.IsNullOrEmpty(envstring) ? Configuration.GetConnectionString("GeekDatabase") : envstring);
             });
@@ -59,6 +59,22 @@ namespace GeekPlatform
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+            }
+
+            // Force SSL in production and staging
+            if (env.IsProduction() || env.IsStaging())
+            {
+                app.Use(async (context, next) => {
+                    if (context.Request.IsHttps)
+                    {
+                        await next();
+                    }
+                    else
+                    {
+                        var httpsUrl = "https://" + context.Request.Host + context.Request.Path;
+                        context.Response.Redirect(httpsUrl, true);
+                    }
+                });
             }
 
             // app.UseApplicationInsightsExceptionTelemetry();
