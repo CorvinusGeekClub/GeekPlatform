@@ -4,24 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
 
 namespace GeekPlatform.Models
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static async Task Initialize(IServiceProvider serviceProvider)
         {
             using (var context = serviceProvider.GetRequiredService<GeekDatabaseContext>())
             {
                 context.Database.EnsureCreated();
                 context.Database.Migrate();
-                AddProfiles(context);
+                await AddProfiles(context, serviceProvider.GetRequiredService<UserManager<Profile>>());
             }
         }
 
-        public static void AddProfiles(GeekDatabaseContext context)
+        private static async Task AddProfiles(GeekDatabaseContext context, UserManager<Profile> userManager)
         {
-                context.Profile.AddRange(
+            const string PWD = "12345678";
+
+            // delete all users
+            foreach (var p in await userManager.Users.ToListAsync())
+            {
+                await userManager.DeleteAsync(p);
+            }
+
+            var profiles = new[] {
                 new Profile()
                 {
                     Name = "Evelyn Stevens",
@@ -832,8 +841,13 @@ namespace GeekPlatform.Models
                     IsAdmin = false,
                     IsActive = true
                 }
-            );
-            context.SaveChanges();
+            };
+
+            foreach (var p in profiles) {
+                await userManager.CreateAsync(p, PWD);
+            }
+
+            await context.SaveChangesAsync();
         }
     }
 }

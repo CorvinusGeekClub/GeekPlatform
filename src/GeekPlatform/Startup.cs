@@ -92,7 +92,7 @@ namespace GeekPlatform
 
             if (!env.IsProduction())
             {
-                Models.SeedData.Initialize(app.ApplicationServices);
+                Models.SeedData.Initialize(app.ApplicationServices).GetAwaiter().GetResult();
             }
 
             // app.UseApplicationInsightsExceptionTelemetry();

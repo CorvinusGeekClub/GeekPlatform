@@ -17,6 +17,8 @@ namespace GeekPlatform.Models
 
         // public virtual TKey Id { get; set; }
 
+        public override string UserName { get => Email; set => Email = value; }
+
         public string Name { get; set; }
 
         public string PicFileName { get; set; }
