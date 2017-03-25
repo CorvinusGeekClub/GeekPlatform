@@ -61,6 +61,11 @@ namespace GeekPlatform
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            if (!env.IsProduction())
+            {
+                Models.SeedData.Initialize(app.ApplicationServices);
+            }
+
             // app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
@@ -72,7 +77,6 @@ namespace GeekPlatform
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            Models.SeedData.Initialize(app.ApplicationServices);
         }
     }
 }
