@@ -1,18 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7F94A185-5B35-4AED-A257-D681066BF01F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FCBC80D5-3498-40CB-AE17-2A019D2BEF6A}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GeekPlatform", "src\GeekPlatform\GeekPlatform.xproj", "{6320B5E1-279E-4D61-A287-F78335A402E9}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GeekDatabase", "GeekDatabase\GeekDatabase.sqlproj", "{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekPlatform", "src\GeekPlatform\GeekPlatform.csproj", "{6320B5E1-279E-4D61-A287-F78335A402E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,18 +19,11 @@ Global
 		{6320B5E1-279E-4D61-A287-F78335A402E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6320B5E1-279E-4D61-A287-F78335A402E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6320B5E1-279E-4D61-A287-F78335A402E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6320B5E1-279E-4D61-A287-F78335A402E9} = {7F94A185-5B35-4AED-A257-D681066BF01F}
-		{A2F383CB-1384-473E-8C7C-FB65DEE1B5AE} = {7F94A185-5B35-4AED-A257-D681066BF01F}
 	EndGlobalSection
 EndGlobal

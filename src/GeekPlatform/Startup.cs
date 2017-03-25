@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace GeekPlatform
 {
@@ -37,6 +38,11 @@ namespace GeekPlatform
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            services.AddDbContext<GeekPlatform.Models.GeekDatabaseContext>( options => {
+                string envstring = Configuration.GetConnectionString("defaultConnection");
+                options.UseSqlServer(string.IsNullOrEmpty(envstring) ? Configuration.GetConnectionString("GeekDatabase") : envstring);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +63,7 @@ namespace GeekPlatform
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseApplicationInsightsExceptionTelemetry();
+            // app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
 
@@ -67,6 +73,8 @@ namespace GeekPlatform
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Models.SeedData.Initialize(app.ApplicationServices);
         }
     }
 }
