@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GeekPlatform.Models
 {
@@ -13,9 +14,13 @@ namespace GeekPlatform.Models
         }
 
         public int CourseId { get; set; }
+        [Required]
         public string CourseName { get; set; }
+        [Required]
         public string DescriptionShort { get; set; }
+        [Required]
         public string DescriptionLong { get; set; }
+        [Required]
         public string IconFileName { get; set; }
         public bool IsWorkshop { get; set; }
         public bool IsActive { get; set; }
