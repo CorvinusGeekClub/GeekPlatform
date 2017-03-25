@@ -90,10 +90,15 @@ namespace GeekPlatform
                 });
             }
 
-            if (!env.IsProduction())
+#if RESET_DB
+            Models.SeedData.Initialize(app.ApplicationServices).GetAwaiter().GetResult();
+#else
+            // reset on staging anyway
+            if (env.IsStaging())
             {
                 Models.SeedData.Initialize(app.ApplicationServices).GetAwaiter().GetResult();
             }
+#endif
 
             // app.UseApplicationInsightsExceptionTelemetry();
 

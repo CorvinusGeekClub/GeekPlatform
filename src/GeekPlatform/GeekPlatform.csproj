@@ -10,6 +10,10 @@
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Reset DB|AnyCPU'">
+    <DefineConstants>TRACE;RESET_DB;NETCOREAPP1_1</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
