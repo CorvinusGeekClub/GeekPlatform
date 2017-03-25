@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeekPlatform.Controllers
 {
-    public class LoginController : Controller
+    public class AccountController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
