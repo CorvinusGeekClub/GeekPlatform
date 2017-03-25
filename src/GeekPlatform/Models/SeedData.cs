@@ -15,7 +15,6 @@ namespace GeekPlatform.Models
             using (var context = serviceProvider.GetRequiredService<GeekDatabaseContext>())
             {
                 context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
                 context.Database.Migrate();
                 await AddProfiles(context, serviceProvider.GetRequiredService<UserManager<Profile>>());
             }
