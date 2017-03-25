@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace GeekPlatform.Models
 {
-    public partial class GeekDatabaseContext : DbContext
+    public partial class GeekDatabaseContext : IdentityDbContext<Profile, IdentityRole<int>, int>
     {
         public virtual DbSet<Competency> Competency { get; set; }
         public virtual DbSet<Course> Course { get; set; }
@@ -20,8 +21,11 @@ namespace GeekPlatform.Models
             :base(options)
         { }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<CourseThematics>()
                 .HasKey(c => new { c.CourseId, c.WeekNumber });
 
