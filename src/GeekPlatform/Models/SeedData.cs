@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections;
 
 namespace GeekPlatform.Models
 {
@@ -15,8 +16,16 @@ namespace GeekPlatform.Models
             {
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
-                context.Database.Migrate();
+                //context.Database.Migrate();
                 AddProfiles(context);
+                AddCourses(context);
+                AddCourseNews(context);
+                AddCourseThematics(context);
+                AddThematicsAttachments(context);
+                AddCourseEnrollments(context);
+                AddHomeworkUploads(context);
+                AddCompetencies(context);
+                AddMemberCompetencies(context);
             }
         }
 
@@ -836,5 +845,220 @@ namespace GeekPlatform.Models
             );
             context.SaveChanges();
         }
+        public static void AddCourses(GeekDatabaseContext context)
+        {
+            context.Course.AddRange(
+            new Course()
+            {
+                CourseName = "Webfejl 1",
+                DescriptionShort = "Webfejlesztés alapok",
+                DescriptionLong = "Webfejlesztés alapok: HTML, CSS",
+                IconFileName = "webf-1.png",
+                IsWorkshop = false,
+                IsActive = true,
+                IsRunning = true,
+                SignUpDeadline = DateTime.Today.AddDays(-3)
+            },
+
+            new Course()
+            {
+                CourseName = "Python workshop",
+                DescriptionShort = "Python workshop.py3",
+                DescriptionLong = "Python workshop py3-al",
+                IconFileName = "pyc-4.jpg",
+                IsWorkshop = true,
+                IsActive = true,
+                IsRunning = true,
+                SignUpDeadline = DateTime.Today.AddDays(2)
+            },
+
+            new Course()
+            {
+                CourseName = "Grafika 1",
+                DescriptionShort = "Grafika 1 Adobe CC-al",
+                DescriptionLong = "Grafika 1 Adobe CC-al a cloudon",
+                IconFileName = "ashop-8.png",
+                IsWorkshop = false,
+                IsActive = true,
+                IsRunning = false,
+                SignUpDeadline = DateTime.Today.AddDays(-20)
+            },
+
+            new Course()
+            {
+                CourseName = "UX design",
+                DescriptionShort = "UX design gyakorlatok",
+                DescriptionLong = "UX design gyakorlatok: web 2.0",
+                IconFileName = "uxs-a73e.png",
+                IsWorkshop = false,
+                IsActive = true,
+                IsRunning = true,
+                SignUpDeadline = DateTime.Today.AddDays(-3)
+            },
+
+            new Course()
+            {
+                CourseName = "BigData 1",
+                DescriptionShort = "BigData 1",
+                DescriptionLong = "BigData 1 a felhőben",
+                IconFileName = "cloudy.png",
+                IsWorkshop = false,
+                IsActive = false,
+                IsRunning = false,
+                SignUpDeadline = DateTime.Today.AddDays(-20)
+            });
+
+            context.SaveChanges();
+
+        }
+
+        public static void AddCourseNews(GeekDatabaseContext context)
+        {
+            Course web1 = context.Course.First(c => c.CourseName == "Webfejl 1");
+            web1.CourseNews.Add(
+                new CourseNews()
+                {
+                    Title = "Bevezetes",
+                    Content = "Sziasztok itt a webfejl 1 kurzuson!",
+                    PostTime = DateTime.Now.AddDays(-1)
+                }
+            );
+            web1.CourseNews.Add(
+                new CourseNews()
+                {
+                    Title = "Visual Studio Beallitasok",
+                    Content = "Az ASP.NET Core rejtelmeit a prpjekten talaljatok.",
+                    PostTime = DateTime.Now
+                });
+            context.SaveChanges();
+        }
+        public static void AddCourseThematics(GeekDatabaseContext context)
+        {
+            Course web1 = context.Course.First(c => c.CourseName == "Webfejl 1");
+            int id = web1.CourseId;
+            context.CourseThematics.AddRange(
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 1,
+                    ActualDate = DateTime.Now.AddDays(2),
+                    Title = "Kezdeti alkalom",
+                    Description = "Ismerkedes a HTML-el"
+                },
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 2,
+                    ActualDate = DateTime.Now.AddDays(2),
+                    Title = "CSS alapok",
+                    Description = "CSS bevezeto"
+                }
+                );
+
+            context.SaveChanges();
+        }
+
+
+        public static void AddThematicsAttachments(GeekDatabaseContext context)
+        {
+            CourseThematics ct = context.CourseThematics.First(c => c.Course.CourseName == "Webfejl 1");
+            ct.ThematicsAttachment.Add( new ThematicsAttachment() { Description = "HTML hazi", AttachmentFileName = "htmls.zip", IsActive = true, IsHomework = true});
+            context.SaveChanges();
+        }
+
+        public static void AddCourseEnrollments(GeekDatabaseContext context)
+        {
+            String[,] teachers = new String[,]
+            {
+                { "Howard Freeman", "Webfejl 1" },
+                { "Evelyn Stevens", "Webfejl 1" },
+                { "Ruth Hudson", "BigData 1" },
+                { "Evelyn Stevens", "UX design" },
+                { "Evelyn Stevens", "Grafika 1" },
+                { "Cheryl Wallace", "Grafika 1" },
+                { "Howard Freeman", "Python workshop" },
+                { "Chris Bennett", "Python workshop" }
+            };
+
+            String[,] students = new String[,]
+            {
+                { "Thomas Scott", "Webfejl 1" },
+                { "Chris Bennett", "Webfejl 1" },
+                { "Howard Freeman", "Grafika 1" },
+                { "Ryan Stone", "Webfejl 1" },
+                { "Jack Grant", "Webfejl 1" },
+                { "Cheryl Wallace", "BigData 1" },
+                { "Alan Bell", "UX design" },
+                { "Thomas Scott", "Grafika 1" },
+                { "Catherine Allen", "Grafika 1" },
+                { "Roger Romero", "Python workshop" },
+                { "Jack Grant", "Python workshop" },
+                { "Tina Carr", "Python workshop" },
+                { "Ryan Stone", "Python workshop" }
+            };
+
+            for (int i = 0; i < teachers.GetLength(0); i++)
+            {
+                int profile_id = context.Profile.First(e => e.Name == teachers[i, 0]).ProfileId;
+                int course_id = context.Course.First(e => e.CourseName == teachers[i, 1]).CourseId;
+                context.CourseEnrollment.Add(new CourseEnrollment() { CourseId = course_id, ProfileId = profile_id, IsInstructor = true, IsFinished = false });
+            }
+
+            for (int i = 0; i < students.GetLength(0); i++)
+            {
+                int profile_id = context.Profile.First(e => e.Name == students[i, 0]).ProfileId;
+                int course_id = context.Course.First(e => e.CourseName == students[i, 1]).CourseId;
+                context.CourseEnrollment.Add(new CourseEnrollment() { CourseId = course_id, ProfileId = profile_id, IsInstructor = false, IsFinished = false });
+            }
+
+            context.SaveChanges();
+        }
+
+        public static void AddHomeworkUploads(GeekDatabaseContext context)
+        {
+            int course_id = context.Course.First(c => c.CourseName == "Webfejl 1").CourseId;
+            context.HomeworkUpload.AddRange(
+                new HomeworkUpload() { CourseId = course_id, WeekNumber = 1, UploadFileName = "hazi1.zip", Comment = "Hazi Feladat 1", UploadDateTime = DateTime.Now.AddDays(-4), ProfileId = context.Profile.First(p => p.Name == "Jack Grant").ProfileId, IsActive = true },
+                new HomeworkUpload() { CourseId = course_id, WeekNumber = 1, UploadFileName = "web.zip", Comment = "1. Hazi Feladat", UploadDateTime = DateTime.Now.AddDays(-3), ProfileId = context.Profile.First(p => p.Name == "Thomas Scott").ProfileId, IsActive = false },
+                new HomeworkUpload() { CourseId = course_id, WeekNumber = 1, UploadFileName = "uj-web.zip", Comment = "Javitott 1. Hazi Feladat", UploadDateTime = DateTime.Now.AddDays(-2), ProfileId = context.Profile.First(p => p.Name == "Thomas Scott").ProfileId, IsActive = true }
+            );
+            context.SaveChanges();
+        }
+
+        public static void AddCompetencies(GeekDatabaseContext context)
+        {
+            String[] skills = new [] { "Grafika", "UX design", "Webfejlesztes" };
+            foreach (String skill in skills)
+            {
+                context.Competency.Add(new Competency { CompetencyName = skill });
+            }
+
+            context.SaveChanges();
+        }
+
+        public static void AddMemberCompetencies(GeekDatabaseContext context)
+        {
+            HashSet<List<String>> maps = new HashSet<List<string>>() {
+                new List<String>() { "Howard Freeman", "Webfejlesztes", "8" },
+                new List<String>() { "Howard Freeman", "UX design", "4" },
+                new List<String>() { "Howard Freeman", "Grafika", "7" },
+                new List<String>() { "Evelyn Stevens", "UX design", "9" },
+                new List<String>() { "Evelyn Stevens", "Webfejlesztes", "0" },
+                new List<String>() { "Cheryl Wallace", "Grafika", "8" },
+                new List<String>() { "Cheryl Wallace", "Webfejlesztes", "4" },
+                new List<String>() { "Roger Romero", "Webfejlesztes", "5" },
+                new List<String>() { "Jack Grant", "Webfejlesztes", "6" },
+                new List<String>() { "Jack Grant", "UX design", "2" },
+                new List<String>() { "Tina Carr", "Grafika", "5" }
+            };
+            foreach (var map in maps)
+            {
+                int profile_id = context.Profile.First(e => e.Name == map[0]).ProfileId;
+                int comp_id = context.Competency.First(e => e.CompetencyName == map[1]).CompetencyId;
+                context.MemberCompetency.Add(new MemberCompetency() { ProfileId = profile_id, CompetencyId = comp_id, CompetencyLvl = int.Parse(map[2]), CompetencyComment = $"{map[1]} skill" });
+            }
+            context.SaveChanges();
+        }
+
     }
 }
