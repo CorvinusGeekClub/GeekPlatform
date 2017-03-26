@@ -61,10 +61,15 @@ namespace GeekPlatform
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            if (!env.IsProduction())
+#if RESET_DB
+            Models.SeedData.Initialize(app.ApplicationServices);
+#else
+            // reset on staging anyway
+            if (env.IsStaging())
             {
                 Models.SeedData.Initialize(app.ApplicationServices);
             }
+#endif
 
             // app.UseApplicationInsightsExceptionTelemetry();
 
