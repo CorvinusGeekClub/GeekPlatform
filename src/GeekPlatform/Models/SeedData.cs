@@ -17,6 +17,7 @@ namespace GeekPlatform.Models
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
                 //context.Database.Migrate();
+
                 AddProfiles(context);
                 AddCourses(context);
                 AddCourseNews(context);
@@ -29,7 +30,7 @@ namespace GeekPlatform.Models
             }
         }
 
-        public static void AddProfiles(GeekDatabaseContext context)
+        private static void AddProfiles(GeekDatabaseContext context)
         {
             context.Profile.AddRange(
             new Profile()
@@ -845,7 +846,7 @@ namespace GeekPlatform.Models
         );
             context.SaveChanges();
         }
-        public static void AddCourses(GeekDatabaseContext context)
+        private static void AddCourses(GeekDatabaseContext context)
         {
             context.Course.AddRange(
             new Course()
@@ -912,7 +913,7 @@ namespace GeekPlatform.Models
 
         }
 
-        public static void AddCourseNews(GeekDatabaseContext context)
+        private static void AddCourseNews(GeekDatabaseContext context)
         {
             Course web1 = context.Course.First(c => c.CourseName == "Webfejl 1");
             web1.CourseNews.Add(
@@ -932,7 +933,7 @@ namespace GeekPlatform.Models
                 });
             context.SaveChanges();
         }
-        public static void AddCourseThematics(GeekDatabaseContext context)
+        private static void AddCourseThematics(GeekDatabaseContext context)
         {
             Course web1 = context.Course.First(c => c.CourseName == "Webfejl 1");
             int id = web1.CourseId;
@@ -959,14 +960,14 @@ namespace GeekPlatform.Models
         }
 
 
-        public static void AddThematicsAttachments(GeekDatabaseContext context)
+        private static void AddThematicsAttachments(GeekDatabaseContext context)
         {
             CourseThematics ct = context.CourseThematics.First(c => c.Course.CourseName == "Webfejl 1");
             ct.ThematicsAttachment.Add(new ThematicsAttachment() { Description = "HTML hazi", AttachmentFileName = "htmls.zip", IsActive = true, IsHomework = true });
             context.SaveChanges();
         }
 
-        public static void AddCourseEnrollments(GeekDatabaseContext context)
+        private static void AddCourseEnrollments(GeekDatabaseContext context)
         {
             String[,] teachers = new String[,]
             {
@@ -1014,7 +1015,7 @@ namespace GeekPlatform.Models
             context.SaveChanges();
         }
 
-        public static void AddHomeworkUploads(GeekDatabaseContext context)
+        private static void AddHomeworkUploads(GeekDatabaseContext context)
         {
             int course_id = context.Course.First(c => c.CourseName == "Webfejl 1").CourseId;
             context.HomeworkUpload.AddRange(
@@ -1025,7 +1026,7 @@ namespace GeekPlatform.Models
             context.SaveChanges();
         }
 
-        public static void AddCompetencies(GeekDatabaseContext context)
+        private static void AddCompetencies(GeekDatabaseContext context)
         {
             String[] skills = new[] { "Grafika", "UX design", "Webfejlesztes" };
             foreach (String skill in skills)
@@ -1036,7 +1037,7 @@ namespace GeekPlatform.Models
             context.SaveChanges();
         }
 
-        public static void AddMemberCompetencies(GeekDatabaseContext context)
+        private static void AddMemberCompetencies(GeekDatabaseContext context)
         {
             HashSet<List<String>> maps = new HashSet<List<string>>() {
                 new List<String>() { "Howard Freeman", "Webfejlesztes", "8" },
