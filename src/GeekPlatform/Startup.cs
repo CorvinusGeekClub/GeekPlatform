@@ -61,6 +61,20 @@ namespace GeekPlatform
                 app.UseExceptionHandler("/Home/Error");
             }
 
+#if RESET_DB
+            Models.SeedData.Initialize(app.ApplicationServices, true);
+#else
+            // reset on staging anyway
+            if (env.IsStaging())
+            {
+                Models.SeedData.Initialize(app.ApplicationServices, true);
+            } else
+            {
+                Models.SeedData.Initialize(app.ApplicationServices, false);
+            }
+
+#endif
+
             // app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
@@ -72,7 +86,6 @@ namespace GeekPlatform
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            Models.SeedData.Initialize(app.ApplicationServices);
         }
     }
 }
