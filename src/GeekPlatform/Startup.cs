@@ -62,13 +62,17 @@ namespace GeekPlatform
             }
 
 #if RESET_DB
-            Models.SeedData.Initialize(app.ApplicationServices);
+            Models.SeedData.Initialize(app.ApplicationServices, true);
 #else
             // reset on staging anyway
             if (env.IsStaging())
             {
-                Models.SeedData.Initialize(app.ApplicationServices);
+                Models.SeedData.Initialize(app.ApplicationServices, true);
+            } else
+            {
+                Models.SeedData.Initialize(app.ApplicationServices, false);
             }
+
 #endif
 
             // app.UseApplicationInsightsExceptionTelemetry();

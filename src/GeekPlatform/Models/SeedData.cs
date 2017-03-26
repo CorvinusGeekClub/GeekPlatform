@@ -10,23 +10,27 @@ namespace GeekPlatform.Models
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static void Initialize(IServiceProvider serviceProvider, bool loadSamples)
         {
             using (var context = serviceProvider.GetRequiredService<GeekDatabaseContext>())
             {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
-                //context.Database.Migrate();
-
-                AddProfiles(context);
-                AddCourses(context);
-                AddCourseNews(context);
-                AddCourseThematics(context);
-                AddThematicsAttachments(context);
-                AddCourseEnrollments(context);
-                AddHomeworkUploads(context);
-                AddCompetencies(context);
-                AddMemberCompetencies(context);
+                if (loadSamples)
+                {
+                    context.Database.EnsureDeleted();
+                    context.Database.Migrate();
+                    AddProfiles(context);
+                    AddCourses(context);
+                    AddCourseNews(context);
+                    AddCourseThematics(context);
+                    AddThematicsAttachments(context);
+                    AddCourseEnrollments(context);
+                    AddHomeworkUploads(context);
+                    AddCompetencies(context);
+                    AddMemberCompetencies(context);
+                } else
+                {
+                    context.Database.Migrate();
+                }
             }
         }
 
