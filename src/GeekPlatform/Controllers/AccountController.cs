@@ -43,5 +43,11 @@ namespace GeekPlatform.Controllers
 
             return Redirect("/");
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect("/");
+        }
     }
 }
