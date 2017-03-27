@@ -15,9 +15,9 @@
 <body>
     <div class="wrapper">
         <h1>G-Nest</h1>
-        <form action="" method="post">
-            <input type="text" placeholder="E-mail cím">
-            <input type="password" placeholder="Jelszó">
+        <form action="@Url.Action("Login", "Account")" method="post">
+            <input name="email" type="text" placeholder="E-mail cím">
+            <input name="password" type="password" placeholder="Jelszó">
             <input type="submit" value="Bejelentkezés">
         </form>
         <a href="" id="pw-reset">Elfelejtetted a jelszavad?</a>

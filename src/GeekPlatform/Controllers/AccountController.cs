@@ -20,7 +20,7 @@ namespace GeekPlatform.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        
+
         public async Task<IActionResult> Login(string email, string password)
         {
             if (String.IsNullOrEmpty(email))
@@ -29,7 +29,7 @@ namespace GeekPlatform.Controllers
             }
 
             Profile user = await _userManager.FindByEmailAsync(email);
-            if (!user.IsActive)
+            if (user == null || !user.IsActive)
             {
                 return View();
             }
