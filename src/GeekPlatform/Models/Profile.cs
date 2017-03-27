@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeekPlatform.Models
 {
-    public partial class Profile
+    public partial class Profile : IdentityUser<int>
     {
         public Profile()
         {
@@ -14,7 +15,9 @@ namespace GeekPlatform.Models
             MemberCompetency = new HashSet<MemberCompetency>();
         }
 
-        public int ProfileId { get; set; }
+        // public virtual TKey Id { get; set; }
+
+        public override string UserName { get => Email; set => Email = value; }
 
         public string Name { get; set; }
 
@@ -29,10 +32,10 @@ namespace GeekPlatform.Models
         public string Major { get; set; }
 
         public string Workplace { get; set; }
-        
-        public string Email { get; set; }
 
-        public string Phone { get; set; }
+        // public virtual string Emal { get; set; }
+
+        // public virtual string PhoneNumber { get; set; }
 
         public string Slack { get; set; }
 
