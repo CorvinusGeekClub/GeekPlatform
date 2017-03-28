@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using GeekPlatform.Models;
+using GeekPlatform.Models.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,8 +30,10 @@ namespace GeekPlatform.Controllers
         {
             using (var context = _serviceProvider.GetRequiredService<GeekDatabaseContext>())
             {
-                return View(context.Course.ToList());
+                var vm = new JelekezesViewModel(context.Course.ToList());
+                return View(vm);
             }
+
            
         }
     }
