@@ -1,8 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
+@using GeekPlatform.Models;
 
 
 <div class="row doboz">
@@ -23,3 +22,11 @@
         <div class="col-md-2 kozep"><button class="btn-lg jelentkezz">Jelentkezés</button></div>
     </div>
 </div>
+@foreach(Course i in Model)
+{
+    <div>
+        @i.CourseName
+
+    </div>
+}
+   
