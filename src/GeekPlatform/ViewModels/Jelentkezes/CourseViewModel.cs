@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace GeekPlatform.Models.ViewModels
+namespace GeekPlatform.ViewModels.Jelentkezes
 {
     public class CourseViewModel
     {
