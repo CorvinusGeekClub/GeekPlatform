@@ -10,7 +10,7 @@
         <h2 id="kurzuscim-passziv">@Model.Nev</h2>
         <div class="row dobozbal">
             <h4 class="cimsor">Oktató</h4>
-            @foreach (OktatoViewModel oktato in Model.Oktatok)
+            @foreach (OktatoViewModel oktato in Model.Courses)
             {
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
@@ -20,22 +20,4 @@
                     <p>@oktato.Telefon</p>
                 </div>}
         </div>
-        <div class="row dobozbal">
-            <h4 class="cimsor">Részletes tantárgyleírás</h4>
-            <p>@Model.Leiras</p>
-        </div>
-    </div>
-    <div class="col-md-4 dobozjobb">
-        <div class="row"><h4 class="cimsor">Tematika</h4></div>
-        <div class="row">
-            <div class="col-md-12">
-                @foreach (KurzusAdatokViewModel tematika in Model.Tematika)
-                {
-                    <p class="het">@tematika.Tematika.First().Het  - 2017.02.14</p>
-                    <p>Első hét anyagának leírása</p>
-                    <hr>
-                }                
-            </div>
-        </div>
-    </div>
-</div>
+      

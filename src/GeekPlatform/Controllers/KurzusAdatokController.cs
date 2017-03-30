@@ -29,6 +29,7 @@ namespace GeekPlatform.Controllers
         }
         public IActionResult Passziv()
         {
+
             GeekDatabaseContext context = _serviceProvider.GetRequiredService<GeekDatabaseContext>();
             IEnumerable<Course> model = context.Course.Where(c => !c.IsRunning);
             KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(model);

@@ -17,6 +17,7 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
 
         public KurzusAdatokViewModel(IEnumerable<Course> kurzusok)
         {
+            /*
             Course kurzus = kurzusok.First(c => !c.IsRunning);
             Nev = kurzus.CourseName;
             IEnumerable<CourseEnrollment> oktatoResztvevok = kurzus.CourseEnrollment.Where(enrollment => enrollment.IsInstructor);
@@ -25,6 +26,10 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
             Leiras = kurzus.DescriptionLong;
             IEnumerable<CourseThematics> relevansTematika = kurzus.CourseThematics.Where(thematics => thematics.CourseId == kurzus.CourseId);
             Tematika = relevansTematika.Select(model => new KurzusTematikaViewModel(model));
+            */
+            this.Oktatok = new[] { new OktatoViewModel(kurzusok.First().CourseEnrollment.First().Profile) };
+
+
         }
     }
 }
