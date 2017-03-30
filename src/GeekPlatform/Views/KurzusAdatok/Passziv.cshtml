@@ -5,36 +5,36 @@
 }
 @using GeekPlatform.ViewModels.KurzusAdatok;
 
-<div class="row passziv" >
+<div class="row passziv">
     <div class="col-md-8">
         <h2 id="kurzuscim-passziv">@Model.Nev</h2>
         <div class="row dobozbal">
             <h4 class="cimsor">Oktató</h4>
             @foreach (OktatoViewModel oktato in Model.Oktatok)
             {
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-                <h4><em>@oktato.Nev</em></h4>
-                <p>@oktato.Pozicio</p>
-                <p>@oktato.EMail<p>
-                <p>@oktato.Telefon</p>
-            </div>}
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <h4><em>@oktato.Nev</em></h4>
+                    <p>@oktato.Pozicio</p>
+                    <p>@oktato.EMail<p>
+                    <p>@oktato.Telefon</p>
+                </div>}
         </div>
         <div class="row dobozbal">
             <h4 class="cimsor">Részletes tantárgyleírás</h4>
-            <p >@Model.Leiras</p>
+            <p>@Model.Leiras</p>
         </div>
     </div>
     <div class="col-md-4 dobozjobb">
         <div class="row"><h4 class="cimsor">Tematika</h4></div>
         <div class="row">
             <div class="col-md-12">
-                <p class="het">1. hét - 2017.02.14</p>
-                <p>Első hét anyagának leírása</p>
-                <hr>
-                <p class="het">1. hét - 2017.02.21</p>
-                <p>Második hét anyagának leírása</p>
-                <hr>
+                @foreach (KurzusAdatokViewModel tematika in Model.Tematika)
+                {
+                    <p class="het">@tematika.Tematika.First().Het  - 2017.02.14</p>
+                    <p>Első hét anyagának leírása</p>
+                    <hr>
+                }                
             </div>
         </div>
     </div>

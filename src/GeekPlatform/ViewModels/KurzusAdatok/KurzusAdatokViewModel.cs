@@ -15,14 +15,16 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
         public String Leiras { get; }
         public IEnumerable<KurzusTematikaViewModel> Tematika { get; }
 
-        public KurzusAdatokViewModel(Course kurzus)
+        public KurzusAdatokViewModel(IEnumerable<Course> kurzusok)
         {
+            Course kurzus = kurzusok.First(c => !c.IsRunning);
             Nev = kurzus.CourseName;
-            IEnumerable<CourseEnrollment> oktatoresztvevok = kurzus.CourseEnrollment.Where(enrollment => enrollment.IsInstructor);
-            IEnumerable<Profile> oktatok = oktatoresztvevok.Select(e => e.Profile);
+            IEnumerable<CourseEnrollment> oktatoResztvevok = kurzus.CourseEnrollment.Where(enrollment => enrollment.IsInstructor);
+            IEnumerable<Profile> oktatok = oktatoResztvevok.Select(e => e.Profile);
             Oktatok = oktatok.Select(model => new OktatoViewModel(model));
             Leiras = kurzus.DescriptionLong;
-
+            IEnumerable<CourseThematics> relevansTematika = kurzus.CourseThematics.Where(thematics => thematics.CourseId == kurzus.CourseId);
+            Tematika = relevansTematika.Select(model => new KurzusTematikaViewModel(model));
         }
     }
 }

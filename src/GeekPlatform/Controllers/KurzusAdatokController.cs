@@ -30,7 +30,7 @@ namespace GeekPlatform.Controllers
         public IActionResult Passziv()
         {
             GeekDatabaseContext context = _serviceProvider.GetRequiredService<GeekDatabaseContext>();
-            Course model = context.Course.First();
+            IEnumerable<Course> model = context.Course.Where(c => !c.IsRunning);
             KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(model);
             return View(viewModel);
         }
