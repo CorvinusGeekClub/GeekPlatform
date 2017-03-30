@@ -3,33 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace GeekPlatform.ViewModels.KurzusAdatok
 {
-    public class KurzusAdatokViewModel
+    public class KurzusAdatokViewModel : ViewModelBase
     {
-        
-
         public String Nev { get; }
-        public IEnumerable<OktatoViewModel> Oktatok { get; }
         public String Leiras { get; }
-        public IEnumerable<KurzusTematikaViewModel> Tematika { get; }
+        public IEnumerable<OktatoViewModel> Oktatok { get; }
+        public IEnumerable<KurzusTematikaViewModel> Tematikak { get; }
 
-        public KurzusAdatokViewModel(IEnumerable<Course> kurzusok)
+        public KurzusAdatokViewModel(Course kurzus, IEnumerable<CourseEnrollment> jelentkezesek)
         {
-            /*
-            Course kurzus = kurzusok.First(c => !c.IsRunning);
             Nev = kurzus.CourseName;
-            IEnumerable<CourseEnrollment> oktatoResztvevok = kurzus.CourseEnrollment.Where(enrollment => enrollment.IsInstructor);
-            IEnumerable<Profile> oktatok = oktatoResztvevok.Select(e => e.Profile);
-            Oktatok = oktatok.Select(model => new OktatoViewModel(model));
             Leiras = kurzus.DescriptionLong;
-            IEnumerable<CourseThematics> relevansTematika = kurzus.CourseThematics.Where(thematics => thematics.CourseId == kurzus.CourseId);
-            Tematika = relevansTematika.Select(model => new KurzusTematikaViewModel(model));
-            */
-            this.Oktatok = new[] { new OktatoViewModel(kurzusok.First().CourseEnrollment.First().Profile) };
-
-
+            IEnumerable<Profile> oktatoResztvevok = jelentkezesek
+                .Where(enrollment => enrollment.IsInstructor
+                    && enrollment.CourseId == kurzus.CourseId)
+                .Select(p => p.Profile);
+            Oktatok = oktatoResztvevok.Select(o => new OktatoViewModel(o)).ToList();
+            // TODO: tematika
         }
     }
 }

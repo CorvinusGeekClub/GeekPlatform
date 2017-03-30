@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 using GeekPlatform.Models;
 using GeekPlatform.ViewModels.KurzusAdatok;
@@ -18,7 +19,8 @@ namespace GeekPlatform.Controllers
     {
         private IServiceProvider _serviceProvider;
 
-        public KurzusAdatokController(IServiceProvider serviceProvider) {
+        public KurzusAdatokController(IServiceProvider serviceProvider)
+        {
             _serviceProvider = serviceProvider;
         }
 
@@ -27,13 +29,30 @@ namespace GeekPlatform.Controllers
         {
             return View();
         }
-        public IActionResult Passziv()
-        {
 
+        // GET: /KurzusAdatok/Passziv/id
+        public IActionResult Passziv(int? id)
+        {
             GeekDatabaseContext context = _serviceProvider.GetRequiredService<GeekDatabaseContext>();
-            IEnumerable<Course> model = context.Course.Where(c => !c.IsRunning);
-            KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(model);
+            if (!id.HasValue)
+            {
+                return BadRequest();
+            }
+
+            Course kurzus = context.Course.Where(c => c.IsActive && !c.IsRunning && c.CourseId == id).FirstOrDefault();
+
+            if (kurzus == null)
+            {
+                return NotFound();
+            }
+
+            IEnumerable<CourseEnrollment> jelentkezesek = context.CourseEnrollment
+                .Include(ce => ce.Course)
+                .Include(ce => ce.Profile);
+            // TODO tematikak = ...
+            KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(kurzus, jelentkezesek);
             return View(viewModel);
+
         }
     }
 }
