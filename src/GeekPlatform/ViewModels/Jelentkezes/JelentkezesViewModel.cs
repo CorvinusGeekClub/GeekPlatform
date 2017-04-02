@@ -8,9 +8,9 @@ using GeekPlatform.Models;
 
 namespace GeekPlatform.ViewModels.Jelentkezes
 {
-    public class JelekezesViewModel : ViewModelBase
+    public class JelentkezesViewModel : ViewModelBase
     {
-        public JelekezesViewModel(IEnumerable<Course> courselist)
+        public JelentkezesViewModel(IEnumerable<Course> courselist)
         {
             Courses = courselist.Select(x => new CourseViewModel(x)).ToList();
         }

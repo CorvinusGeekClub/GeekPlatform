@@ -30,7 +30,7 @@ namespace GeekPlatform.Controllers
         {
             using (var context = _serviceProvider.GetRequiredService<GeekDatabaseContext>())
             {
-                var vm = new JelekezesViewModel(context.Course.ToList());
+                var vm = new JelentkezesViewModel(context.Course.ToList());
                 return View(vm);
             }
 
