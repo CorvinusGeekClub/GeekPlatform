@@ -13,7 +13,7 @@ namespace GeekPlatform.Controllers
     [Authorize]
     public class HomeController : ControllerBase
     {
-        public HomeController(UserManager<Profile> userManager) : base(userManager)
+        public HomeController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
         }
 

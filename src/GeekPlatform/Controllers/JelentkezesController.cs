@@ -15,7 +15,7 @@ namespace GeekPlatform.Controllers
     public class JelentkezesController : ControllerBase
     {
         // GET: /<controller>/
-        public JelentkezesController(UserManager<Profile> userManager) : base(userManager)
+        public JelentkezesController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
         }
 

@@ -15,7 +15,7 @@ namespace GeekPlatform.Controllers
     public class KurzusAdatokController : ControllerBase
     {
         // GET: /<controller>/
-        public KurzusAdatokController(UserManager<Profile> userManager) : base(userManager)
+        public KurzusAdatokController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
         }
 

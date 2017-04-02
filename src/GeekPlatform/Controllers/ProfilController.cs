@@ -15,7 +15,7 @@ namespace GeekPlatform.Controllers
     public class ProfilController : ControllerBase
     {
         // GET: /<controller>/
-        public ProfilController(UserManager<Profile> userManager) : base(userManager)
+        public ProfilController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
         }
 

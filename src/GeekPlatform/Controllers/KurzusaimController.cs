@@ -15,7 +15,7 @@ namespace GeekPlatform.Controllers
     public class KurzusaimController : ControllerBase
     {
         // GET: /<controller>/
-        public KurzusaimController(UserManager<Profile> userManager) : base(userManager)
+        public KurzusaimController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
         }
 

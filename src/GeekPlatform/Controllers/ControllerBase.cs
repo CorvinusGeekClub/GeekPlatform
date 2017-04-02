@@ -13,11 +13,14 @@ namespace GeekPlatform.Controllers
     {
         private readonly UserManager<Profile> _userManager;
 
+        private GeekDatabaseContext DbContext { get; }
+
         protected new Profile User { get; private set; }
 
-        public ControllerBase(UserManager<Profile> userManager)
+        public ControllerBase(UserManager<Profile> userManager, GeekDatabaseContext dbContext)
         {
             _userManager = userManager;
+            DbContext = dbContext;
         }
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)

@@ -15,8 +15,7 @@ namespace GeekPlatform.Controllers
         private readonly UserManager<Profile> _userManager;
         private readonly SignInManager<Profile> _signInManager;
 
-        public AccountController(UserManager<Profile> userManager, SignInManager<Profile> signInManager)
-            :base(userManager)
+        public AccountController(UserManager<Profile> userManager, GeekDatabaseContext dbContext, SignInManager<Profile> signInManager) : base(userManager, dbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
