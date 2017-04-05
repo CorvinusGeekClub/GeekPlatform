@@ -48,8 +48,7 @@ namespace GeekPlatform.Controllers
 
             IEnumerable<CourseEnrollment> jelentkezesek = context.CourseEnrollment
                 .Include(ce => ce.Course)
-                .Include(ce => ce.Profile);
-            // TODO tematikak = ...
+                .Include(ce => ce.Profile);            
             IEnumerable<CourseThematics> tematika = context.CourseThematics;
             KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(kurzus, jelentkezesek, tematika);
             return View(viewModel);
