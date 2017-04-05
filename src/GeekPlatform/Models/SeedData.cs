@@ -971,48 +971,49 @@ namespace GeekPlatform.Models
 
         private static void AddCourseEnrollments(GeekDatabaseContext context)
         {
-            String[,] teachers = new String[,]
-            {
-                { "Howard Freeman", "Webfejl 1" },
-                { "Evelyn Stevens", "Webfejl 1" },
-                { "Ruth Hudson", "BigData 1" },
-                { "Evelyn Stevens", "UX design" },
-                { "Evelyn Stevens", "Grafika 1" },
-                { "Cheryl Wallace", "Grafika 1" },
-                { "Howard Freeman", "Python workshop" },
-                { "Chris Bennett", "Python workshop" }
-            };
 
-            String[,] students = new String[,]
+            context.CourseEnrollment.Add(new CourseEnrollment()
             {
-                { "Thomas Scott", "Webfejl 1" },
-                { "Chris Bennett", "Webfejl 1" },
-                { "Howard Freeman", "Grafika 1" },
-                { "Ryan Stone", "Webfejl 1" },
-                { "Jack Grant", "Webfejl 1" },
-                { "Cheryl Wallace", "BigData 1" },
-                { "Alan Bell", "UX design" },
-                { "Thomas Scott", "Grafika 1" },
-                { "Catherine Allen", "Grafika 1" },
-                { "Roger Romero", "Python workshop" },
-                { "Jack Grant", "Python workshop" },
-                { "Tina Carr", "Python workshop" },
-                { "Ryan Stone", "Python workshop" }
-            };
+                ProfileId = 1,
+                CourseId = 1,
+                IsInstructor = true
+            });
 
-            for (int i = 0; i < teachers.GetLength(0); i++)
+            context.CourseEnrollment.Add(new CourseEnrollment()
             {
-                int profile_id = context.Profile.First(e => e.Name == teachers[i, 0]).Id;
-                int course_id = context.Course.First(e => e.CourseName == teachers[i, 1]).CourseId;
-                context.CourseEnrollment.Add(new CourseEnrollment() { CourseId = course_id, ProfileId = profile_id, IsInstructor = true, IsFinished = false });
-            }
+                ProfileId = 2,
+                CourseId = 2,
+                IsInstructor = true
+            });
 
-            for (int i = 0; i < students.GetLength(0); i++)
+            context.CourseEnrollment.Add(new CourseEnrollment()
             {
-                int profile_id = context.Profile.First(e => e.Name == students[i, 0]).Id;
-                int course_id = context.Course.First(e => e.CourseName == students[i, 1]).CourseId;
-                context.CourseEnrollment.Add(new CourseEnrollment() { CourseId = course_id, ProfileId = profile_id, IsInstructor = false, IsFinished = false });
-            }
+                ProfileId = 8,
+                CourseId = 1,
+                IsInstructor = true
+            });
+
+            context.CourseEnrollment.Add(new CourseEnrollment()
+            {
+                ProfileId = 3,
+                CourseId = 3,
+                IsInstructor = true
+            });
+
+            context.CourseEnrollment.Add(new CourseEnrollment()
+            {
+                ProfileId = 4,
+                CourseId = 1,
+                IsInstructor = true
+            });
+
+            context.CourseEnrollment.Add(new CourseEnrollment()
+            {
+                ProfileId = 5,
+                CourseId = 2,
+                IsInstructor = true
+            });
+
 
             context.SaveChanges();
         }
