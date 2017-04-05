@@ -860,7 +860,7 @@ namespace GeekPlatform.Models
                 IconFileName = "webf-1.png",
                 IsWorkshop = false,
                 IsActive = true,
-                IsRunning = true,
+                IsRunning = false,
                 SignUpDeadline = DateTime.Today.AddDays(-3)
             },
 

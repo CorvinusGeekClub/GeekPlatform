@@ -4,7 +4,7 @@
 
 <div class="row passziv">
     <div class="col-md-8">
-        <h2 id="kurzuscim-passziv">Model.Nev</h2>
+        <h2 id="kurzuscim-passziv">@Model.Nev</h2>
         <div class="row dobozbal">
             <h4 class="cimsor">Oktató</h4>
             @foreach (OktatoViewModel oktato in Model.Oktatok)
@@ -26,10 +26,10 @@
         <div class="row"><h4 class="cimsor">Tematika</h4></div>
         <div class="row">
             <div class="col-md-12">
-                foreach (KurzusAdatokViewModel tematika in Model.Tematika)
+                @foreach (KurzusTematikaViewModel tematika in Model.KurzusTematika)
                 {
-                    <p class="het">tematika.Tematika.First().Het   2017.02.14</p>
-                    <p>Első hét anyagának leírása</p>
+                    <p class="het">@tematika.Het. hét @tematika.Datum</p>
+                    <p>@tematika.Leiras</p>
                     <hr>
                 }
             </div>
