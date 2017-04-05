@@ -13,7 +13,7 @@ namespace GeekPlatform.Controllers
     {
         private readonly UserManager<Profile> _userManager;
 
-        private GeekDatabaseContext DbContext { get; }
+        protected GeekDatabaseContext DbContext { get; }
 
         protected new Profile User { get; private set; }
 
