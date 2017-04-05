@@ -858,10 +858,10 @@ namespace GeekPlatform.Models
                 DescriptionShort = "Webfejlesztés alapok",
                 DescriptionLong = "Webfejlesztés alapok: HTML, CSS",
                 IconFileName = "webf-1.png",
-                IsWorkshop = false,
+                IsWorkshop = true,
                 IsActive = true,
-                IsRunning = true,
-                SignUpDeadline = DateTime.Today.AddDays(-3)
+                IsRunning = false,
+                SignUpDeadline = DateTime.Today.AddDays(3)
             },
 
             new Course()
@@ -873,7 +873,7 @@ namespace GeekPlatform.Models
                 IsWorkshop = true,
                 IsActive = true,
                 IsRunning = true,
-                SignUpDeadline = DateTime.Today.AddDays(2)
+                SignUpDeadline = DateTime.Today.AddDays(-2)
             },
 
             new Course()
@@ -885,7 +885,7 @@ namespace GeekPlatform.Models
                 IsWorkshop = false,
                 IsActive = true,
                 IsRunning = false,
-                SignUpDeadline = DateTime.Today.AddDays(-20)
+                SignUpDeadline = DateTime.Today.AddDays(20)
             },
 
             new Course()
@@ -896,8 +896,8 @@ namespace GeekPlatform.Models
                 IconFileName = "uxs-a73e.png",
                 IsWorkshop = false,
                 IsActive = true,
-                IsRunning = true,
-                SignUpDeadline = DateTime.Today.AddDays(-3)
+                IsRunning = false,
+                SignUpDeadline = DateTime.Today.AddDays(3)
             },
 
             new Course()
@@ -906,10 +906,22 @@ namespace GeekPlatform.Models
                 DescriptionShort = "BigData 1",
                 DescriptionLong = "BigData 1 a felhőben",
                 IconFileName = "cloudy.png",
-                IsWorkshop = false,
+                IsWorkshop = true,
                 IsActive = false,
                 IsRunning = false,
-                SignUpDeadline = DateTime.Today.AddDays(-20)
+                SignUpDeadline = DateTime.Today.AddDays(20)
+            },
+
+            new Course()
+            {
+                CourseName = "Kolbász",
+                DescriptionShort = "Hurka-kolász 1",
+                DescriptionLong = "Hogyan készítsünk hurkát illetve kolbászt, valamint hogyan hasznosíthatjuk ezt a hétköznapokban",
+                IconFileName = "cloudy.png",
+                IsWorkshop = true,
+                IsActive = true,
+                IsRunning = false,
+                SignUpDeadline = DateTime.Today.AddDays(8)
             });
 
             context.SaveChanges();
