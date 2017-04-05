@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GeekPlatform.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -18,27 +17,16 @@ namespace GeekPlatform.Controllers
     [Authorize]
     public class JelentkezesController : ControllerBase
     {
-
-        private IServiceProvider _serviceProvider;
-
-        public JelentkezesController(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
-
-        // GET: /<controller>/
         public JelentkezesController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
         }
 
+        // GET: /<controller>/
         public IActionResult Index()
         {
-            using (var context = _serviceProvider.GetRequiredService<GeekDatabaseContext>())
-            {
-                var vm = new JelentkezesViewModel(context.Course.ToList());
-                return View(vm);
-            }
-
+            
+            var vm = new JelentkezesViewModel(DbContext.Course.ToList(), User);
+            return View(vm);
            
         }
     }
