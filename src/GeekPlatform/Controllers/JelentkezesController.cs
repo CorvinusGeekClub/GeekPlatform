@@ -25,7 +25,7 @@ namespace GeekPlatform.Controllers
         public IActionResult Index()
         {
             
-            var vm = new JelentkezesViewModel(DbContext.Course.ToList(), User);
+            var vm = new JelentkezesViewModel(DbContext.Course.Include(c => c.CourseEnrollment).ThenInclude(enr => enr.Profile).ToList(), User);
             return View(vm);
            
         }
