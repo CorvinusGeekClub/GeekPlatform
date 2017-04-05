@@ -8,8 +8,17 @@
 @foreach (CourseViewModel i in Model.Courses)
 {
     <div class="row doboz">
-        <div class="row workshopcim"><h4>@i.CourseName</h4></div>
-        <div class="row workshopoktato"><span>@i.Instructor</span></div>
+        @if (i.IsWorkshop)
+        {
+            <div class="row workshopcim"><h4>@i.CourseName</h4></div>
+            <div class="row workshopoktato"><span>@i.Instructor</span></div>
+        }
+        else
+        {
+            <div class="row aktivcim"><h4>@i.CourseName</h4></div>
+            <div class="row aktivoktato"><span>@i.Instructor</span></div>
+        }        
+        
         <div class="row">
             <div class="col-md-2 kozep"><img class="kiskep" src="@i.ImgUrl"></div>
             <div class="col-md-8 szoveg"><p>@i.Description</p></div>

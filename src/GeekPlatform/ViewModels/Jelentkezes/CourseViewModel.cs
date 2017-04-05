@@ -13,11 +13,13 @@ namespace GeekPlatform.ViewModels.Jelentkezes
             ImgUrl = c.IconFileName;
             Description = c.DescriptionShort;
             CourseId = c.CourseId;
+            IsWorkshop = c.IsWorkshop;
         }
         public string CourseName { get; }
         public string Instructor { get; }
         public string ImgUrl { get; }
         public string Description { get; }
         public int CourseId { get; }
+        public  bool IsWorkshop { get; }
     }
 }
