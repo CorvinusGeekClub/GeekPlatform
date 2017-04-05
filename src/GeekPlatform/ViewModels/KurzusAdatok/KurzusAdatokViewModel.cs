@@ -14,7 +14,8 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
         public IEnumerable<OktatoViewModel> Oktatok { get; }
         public IEnumerable<KurzusTematikaViewModel> KurzusTematika { get; }
 
-        public KurzusAdatokViewModel(Course kurzus, IEnumerable<CourseEnrollment> jelentkezesek, IEnumerable<CourseThematics> tematika)
+        public KurzusAdatokViewModel(Course kurzus, IEnumerable<CourseEnrollment> jelentkezesek, IEnumerable<CourseThematics> tematika, Profile user)
+            :base(user)
         {
             Nev = kurzus.CourseName;
             Leiras = kurzus.DescriptionLong;

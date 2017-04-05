@@ -47,7 +47,7 @@ namespace GeekPlatform.Controllers
                 .Include(ce => ce.Course)
                 .Include(ce => ce.Profile);            
             IEnumerable<CourseThematics> tematika = DbContext.CourseThematics;
-            KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(kurzus, jelentkezesek, tematika);
+            KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(kurzus, jelentkezesek, tematika, User);
             return View(viewModel);
 
         }
