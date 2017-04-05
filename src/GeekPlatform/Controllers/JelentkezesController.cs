@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Identity;
 using GeekPlatform.Models;
 using GeekPlatform.ViewModels.Jelentkezes;
 
+
+
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace GeekPlatform.Controllers
@@ -22,7 +25,7 @@ namespace GeekPlatform.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Index(bool enrolled)
         {
             
             var vm = new JelentkezesViewModel(
@@ -30,9 +33,21 @@ namespace GeekPlatform.Controllers
                 .Include(c => c.CourseEnrollment)
                 .ThenInclude(enr => enr.Profile)
                 .Where(s => s.IsActive && s.SignUpDeadline > DateTime.Now)
-                .ToList(), User);
+                .ToList(), enrolled, User);
             return View(vm);
            
+        }
+
+        public IActionResult Jelentkezes(int Id)
+        {
+            DbContext.CourseEnrollment.Add(new CourseEnrollment()
+                {
+                    ProfileId = User.Id,
+                    CourseId = Id,
+                    IsInstructor = false
+                });
+            DbContext.SaveChanges();
+            return Redirect("/Jelentkezes/?enrolled=true");
         }
     }
 }

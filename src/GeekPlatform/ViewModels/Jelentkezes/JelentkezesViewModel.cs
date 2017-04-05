@@ -10,11 +10,13 @@ namespace GeekPlatform.ViewModels.Jelentkezes
 {
     public class JelentkezesViewModel : ViewModelBase
     {
-        public JelentkezesViewModel(IEnumerable<Course> courselist, Profile p) : base(p)
+        public JelentkezesViewModel(IEnumerable<Course> courselist, bool enrolled, Profile p) : base(p)
         {
             Courses = courselist.Select(x => new CourseViewModel(x, p)).ToList();
+            Enrolled = enrolled;
         }
         public IList<CourseViewModel> Courses { get; }
+        public bool Enrolled { get; }
     }
 
 }

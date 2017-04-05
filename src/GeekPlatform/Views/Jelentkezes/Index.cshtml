@@ -2,8 +2,12 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @using GeekPlatform.ViewModels.Jelentkezes;
+@model JelentkezesViewModel
 
-
+@if (Model.Enrolled)
+{
+    <div class="alert alert-success" role="alert">Ügyes voltál hülyegyerek</div>
+}
 
 @foreach (CourseViewModel i in Model.Courses)
 {
@@ -30,7 +34,8 @@
                 }
                 else
                 {
-                    <button class="btn-lg jelentkezz">Jelentkezés</button>
+             
+                    <a asp-controller="Jelentkezes" asp-action="Jelentkezes" asp-route-id="@i.CourseId" class="btn-lg jelentkezz" >Jelentkezés</a>
                 }
 
             </div>
