@@ -860,7 +860,7 @@ namespace GeekPlatform.Models
                 IconFileName = "webf-1.png",
                 IsWorkshop = false,
                 IsActive = true,
-                IsRunning = true,
+                IsRunning = false,
                 SignUpDeadline = DateTime.Today.AddDays(-3)
             },
 
@@ -997,7 +997,8 @@ namespace GeekPlatform.Models
                 { "Roger Romero", "Python workshop" },
                 { "Jack Grant", "Python workshop" },
                 { "Tina Carr", "Python workshop" },
-                { "Ryan Stone", "Python workshop" }
+                { "Ryan Stone", "Python workshop" },
+                { "Evelyn Stevens", "BigData 1" }
             };
 
             for (int i = 0; i < teachers.GetLength(0); i++)
