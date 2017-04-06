@@ -203,7 +203,7 @@ body {
   border-left: 5px solid #f44e3d;
 }
 
-.navmenu-default .navmenu-nav > .active > a {
+.navmenu-default .navmenu-nav > .active a {
   background-color: #c64d41 !important;
 border-left: 5px solid #f44e3d;
 }

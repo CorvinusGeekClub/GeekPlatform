@@ -1,25 +1,45 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
+@using GeekPlatform.ViewModels.Jelentkezes;
+@model JelentkezesViewModel
+
+@if (Model.Enrolled)
+{
+    <div class="alert alert-success" role="alert">Sikeres jelentkezés</div>
 }
 
+@foreach (CourseViewModel i in Model.Courses)
+{
+    <div class="row doboz">
+        @if (i.IsWorkshop)
+        {
+            <div class="row workshopcim"><h4>@i.CourseName</h4></div>
+            <div class="row workshopoktato"><span>@i.Instructor</span></div>
+        }
+        else
+        {
+            <div class="row aktivcim"><h4>@i.CourseName</h4></div>
+            <div class="row aktivoktato"><span>@i.Instructor</span></div>
+        }        
+        
+        <div class="row">
+            <div class="col-md-2 kozep"><img class="kiskep" src="@i.ImgUrl"></div>
+            <div class="col-md-8 szoveg"><p>@i.Description</p></div>
+            <div class="col-md-2 kozep">
+                @if (i.IsEnrolled)
+                {
+                    <button class="btn-lg jelentkezz btn disabled" disabled>Már jelentkeztél</button>
 
-<div class="row doboz">
-    <div class="row aktivcim"><h4>Kurzus neve</h4></div>
-    <div class="row aktivoktato"><span>Oktató neve</span></div>
-    <div class="row">
-        <div class="col-md-2 kozep"><img class="kiskep" src="~/images/vicc.jpg"></div>
-        <div class="col-md-8 szoveg"><p>A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betûkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta. Nem csak 5 évszázadot élt túl, de az elektronikus betûkészleteknél is változatlanul megmaradt. Az 1960-as években népszerûsítették a Lorem Ipsum részleteket magukbafoglaló Letraset lapokkal, és legutóbb softwarekkel mint például az Aldus Pagemaker.</p></div>
-        <div class="col-md-2 kozep"><button class="btn-lg jelentkezz">Jelentkezés</button></div>
+                }
+                else
+                {
+             
+                    <a asp-controller="Jelentkezes" asp-action="Jelentkezes" asp-route-id="@i.CourseId" class="btn btn-lg jelentkezz" >Jelentkezés</a>
+                }
+
+            </div>
+        </div>
     </div>
-</div>
-<div class="row doboz">
-    <div class="row workshopcim"><h4>Workshop neve</h4></div>
-    <div class="row workshopoktato"><span>Oktató neve</span></div>
-    <div class="row">
-        <div class="col-md-2 kozep"><img class="kiskep" src="~/images/vicc.jpg"></div>
-        <div class="col-md-8 szoveg"><p>A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betûkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta. Nem csak 5 évszázadot élt túl, de az elektronikus betûkészleteknél is változatlanul megmaradt. Az 1960-as években népszerûsítették a Lorem Ipsum részleteket magukbafoglaló Letraset lapokkal, és legutóbb softwarekkel mint például az Aldus Pagemaker.</p></div>
-        <div class="col-md-2 kozep"><button class="btn-lg jelentkezz">Jelentkezés</button></div>
-    </div>
-</div>
+}
+   
