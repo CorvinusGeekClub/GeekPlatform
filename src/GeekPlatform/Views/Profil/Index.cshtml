@@ -3,6 +3,9 @@
 *@
 @{
 }
+@using GeekPlatform.ViewModels.Profil;
+@model ProfilViewModel
+
 <div class="row">
     <div class="col-md-5">
         <div class="panel panel-profile">
@@ -15,14 +18,14 @@
         <div class="panel panel-profile">
             <div class="panel-heading">Általános adatok</div>
             <div class="panel-body">
-                <h3 style="margin-top: 0px;">Név</h3>
-                <h4><em>pozíció, team tagság</em></h4>
+                <h3 style="margin-top: 0px;">@Model.Nev</h3>
+                <h4><em>@Model.PozicioTeamTagsag</em></h4>
                 <hr>
                 <div class="row">
                     <div class="col-xs-4">
-                        <p>Tagság kezdete:</p>
-                        <p>Tagság várható vége:</p>
-                        <p>Munkahely, pozíció:</p>
+                        <p>@Model.TagsagKezdete:</p>
+                        <p>@Model.TagsagVege:</p>
+                        <p>@Model.Munkahely:</p>
                     </div>
                     <div class="col-xs-8">
                         <p>Teszt szöveg, ami elég hosszú</p>
@@ -35,29 +38,29 @@
                     <div class="col-sm-6">
                         <div class="icon-group">
                             <i class="fa fa-envelope-o"></i>
-                            <p>Email info</p>
+                            <p>@Model.Email</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-slack"></i>
-                            <p>Slack info</p>
+                            <p>@Model.Slack</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-map-marker"></i>
-                            <p>Tartózkodási hely infó</p>
+                            <p>@Model.TartozkodasiHely</p>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="icon-group">
                             <i class="fa fa-gift"></i>
-                            <p>Ajándék</p>
+                            <p>@Model.Ajandek</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-mobile-phone"></i>
-                            <p>Telefon</p>
+                            <p>@Model.Telefonszam</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-skype"></i>
-                            <p>Skype</p>
+                            <p>@Model.Skype</p>
                         </div>
                     </div>
                 </div>
@@ -72,7 +75,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-6">
-                        <h4>Ebben a félévben aktív:</h4>
+                        <h4>@Model.Aktiv:</h4>
                     </div>
                     <div class="col-xs-6">
                         <p><i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i></p>
@@ -81,7 +84,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-xs-12">
-                        <h4>Elvégzett kurzusok:</h4>
+                        <h4>@Model.ElvegezettKurzus:</h4>
                     </div>
                 </div>
                 <div class="row">

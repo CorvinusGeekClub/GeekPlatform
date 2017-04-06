@@ -6,6 +6,7 @@ using GeekPlatform.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using GeekPlatform.ViewModels.Profil;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,7 +22,9 @@ namespace GeekPlatform.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ProfilViewModel pv = new ProfilViewModel(User);
+            return View(pv);
+
         }
     }
 }
