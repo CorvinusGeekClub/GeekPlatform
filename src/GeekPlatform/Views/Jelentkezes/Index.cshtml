@@ -6,7 +6,7 @@
 
 @if (Model.Enrolled)
 {
-    <div class="alert alert-success" role="alert">Ügyes voltál hülyegyerek</div>
+    <div class="alert alert-success" role="alert">Sikeres jelentkezés</div>
 }
 
 @foreach (CourseViewModel i in Model.Courses)
@@ -29,13 +29,13 @@
             <div class="col-md-2 kozep">
                 @if (i.IsEnrolled)
                 {
-                    <button class="btn-lg jelentkezz" disabled>Csicskagyerek</button>
+                    <button class="btn-lg jelentkezz btn disabled" disabled>Már jelentkeztél</button>
 
                 }
                 else
                 {
              
-                    <a asp-controller="Jelentkezes" asp-action="Jelentkezes" asp-route-id="@i.CourseId" class="btn-lg jelentkezz" >Jelentkezés</a>
+                    <a asp-controller="Jelentkezes" asp-action="Jelentkezes" asp-route-id="@i.CourseId" class="btn btn-lg jelentkezz" >Jelentkezés</a>
                 }
 
             </div>
