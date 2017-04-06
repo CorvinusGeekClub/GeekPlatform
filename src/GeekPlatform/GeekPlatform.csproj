@@ -60,4 +60,8 @@
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.306" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Galeria\" />
+  </ItemGroup>
+
 </Project>
