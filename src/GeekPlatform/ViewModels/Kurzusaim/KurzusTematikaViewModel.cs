@@ -13,10 +13,8 @@ namespace GeekPlatform.ViewModels.Kurzusaim
 
         public KurzusTematikaViewModel(CourseThematics tematika)
         {
-            DateTime datum = tematika.ActualDate;
-
             Temakor = tematika.Title;
-            Datum = datum.ToString("yyyy.MM.dd. H:mm");
+            Datum = tematika.ActualDate.ToString("yyyy.MM.dd. H:mm");
         }
     }
 }
