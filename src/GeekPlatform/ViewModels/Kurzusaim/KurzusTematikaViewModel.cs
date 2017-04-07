@@ -16,7 +16,7 @@ namespace GeekPlatform.ViewModels.Kurzusaim
             DateTime datum = tematika.ActualDate;
 
             Temakor = tematika.Title;
-            Datum = datum.Year.ToString() + "." + datum.Month.ToString("00") + "." + datum.Day.ToString("00") + ". " + datum.Hour.ToString("00") + ":" + datum.Minute.ToString("00");
+            Datum = datum.ToString("yyyy.MM.dd. H:mm");
         }
     }
 }
