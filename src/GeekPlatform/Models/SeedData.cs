@@ -1042,17 +1042,17 @@ namespace GeekPlatform.Models
         private static void AddMemberCompetencies(GeekDatabaseContext context)
         {
             HashSet<List<String>> maps = new HashSet<List<string>>() {
-                new List<String>() { "Howard Freeman", "Webfejlesztes", "8" },
-                new List<String>() { "Howard Freeman", "UX design", "4" },
-                new List<String>() { "Howard Freeman", "Grafika", "7" },
-                new List<String>() { "Evelyn Stevens", "UX design", "9" },
-                new List<String>() { "Evelyn Stevens", "Webfejlesztes", "0" },
-                new List<String>() { "Cheryl Wallace", "Grafika", "8" },
-                new List<String>() { "Cheryl Wallace", "Webfejlesztes", "4" },
-                new List<String>() { "Roger Romero", "Webfejlesztes", "5" },
-                new List<String>() { "Jack Grant", "Webfejlesztes", "6" },
-                new List<String>() { "Jack Grant", "UX design", "2" },
-                new List<String>() { "Tina Carr", "Grafika", "5" }
+                new List<String>() { "Howard Freeman", "Webfejlesztes", "5" },
+                new List<String>() { "Howard Freeman", "UX design", "3" },
+                new List<String>() { "Howard Freeman", "Grafika", "4" },
+                new List<String>() { "Evelyn Stevens", "UX design", "5" },
+                new List<String>() { "Evelyn Stevens", "Webfejlesztes", "1" },
+                new List<String>() { "Cheryl Wallace", "Grafika", "4" },
+                new List<String>() { "Cheryl Wallace", "Webfejlesztes", "2" },
+                new List<String>() { "Roger Romero", "Webfejlesztes", "3" },
+                new List<String>() { "Jack Grant", "Webfejlesztes", "3" },
+                new List<String>() { "Jack Grant", "UX design", "1" },
+                new List<String>() { "Tina Carr", "Grafika", "2" }
             };
             foreach (var map in maps)
             {
