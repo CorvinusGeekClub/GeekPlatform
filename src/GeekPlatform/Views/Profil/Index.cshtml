@@ -23,14 +23,14 @@
                 <hr>
                 <div class="row">
                     <div class="col-xs-4">
-                        <p>@Model.TagsagKezdete:</p>
-                        <p>@Model.TagsagVege:</p>
-                        <p>@Model.Munkahely:</p>
+                        <p>Tagság kezdete:</p>
+                        <!--<p>Tagság várható vége:</p> -->
+                        <p>Munkahely, pozíció:</p>
                     </div>
                     <div class="col-xs-8">
-                        <p>Teszt szöveg, ami elég hosszú</p>
-                        <p>Teszt szöveg, ami elég hosszú</p>
-                        <p>Teszt szöveg, ami elég hosszú</p>
+                        <p>@Model.TagsagKezdete.ToString("Y")</p>
+                        <!-- <p>@Model.TagsagVege</p> -->
+                        <p>@Model.Munkahely</p>
                     </div>
                 </div>
                 <hr>
@@ -52,7 +52,7 @@
                     <div class="col-sm-6">
                         <div class="icon-group">
                             <i class="fa fa-gift"></i>
-                            <p>@Model.Ajandek</p>
+                            <p>@Model.Ajandek?.ToString("d")</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-mobile-phone"></i>
@@ -75,22 +75,32 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-6">
-                        <h4>@Model.Aktiv:</h4>
+                        <h4>Aktív:</h4>
                     </div>
                     <div class="col-xs-6">
-                        <p><i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i></p>
+                        @foreach (var c in Model.Aktiv)
+                        {
+                            <p>
+                                <i class="fa fa-3x fa-book"></i>
+                                @c.KurzusNev
+                            </p>
+                        }
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-xs-12">
-                        <h4>@Model.ElvegezettKurzus:</h4>
+                        <h4>Elvégzett kurzusok:</h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 course-block">
-                        <p><i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i></p>
-                    </div>
+                    @foreach (var c in Model.Aktiv)
+                    {
+                        <div class="col-xs-12 course-block">
+                            <i class="fa fa-3x fa-book"></i>
+                            @c.KurzusNev
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -99,20 +109,26 @@
         <div class="panel panel-profile">
             <div class="panel-heading">Skillek</div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <h4>Grafika:</h4>
-                        <h4>UX design:</h4>
-                        <h4>Webfejlesztés:</h4>
-                        <h4>Még valami:</h4>
+                @foreach (var c in Model.Kompetencia)
+                {
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <h4>@c.KompetenciaNev:</h4>
+                        </div>
+                        <div class="col-xs-8">
+                            <div>
+                                @for (int i = 0; i < c.KompetenciaSzint; i++)
+                                {
+                                    <i class="fa fa-circle"></i>
+                                }
+                                @for (int i = c.KompetenciaSzint; i < 5; i++)
+                                {
+                                    <i class="fa fa-circle-o"></i>
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-8">
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                    </div>
-                </div>
+                }
                 <div class="row">
                     <div class="col-xs-12">
                         <hr>

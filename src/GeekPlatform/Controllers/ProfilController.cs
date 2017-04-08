@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using GeekPlatform.ViewModels.Profil;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,7 +23,12 @@ namespace GeekPlatform.Controllers
 
         public IActionResult Index()
         {
-            ProfilViewModel pv = new ProfilViewModel(User);
+            ProfilViewModel pv = new ProfilViewModel(
+                DbContext.Profile
+                    .Include(p => p.CourseEnrollment).ThenInclude(ce => ce.Course)
+                    .Include(p => p.MemberCompetency).ThenInclude(mc => mc.Competency)
+                    .First(p => p == User)
+                );
             return View(pv);
 
         }
