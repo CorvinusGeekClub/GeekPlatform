@@ -21,8 +21,11 @@ namespace GeekPlatform.ViewModels.Profil
             Ajandek = user.Birthday;
             Telefonszam = user.PhoneNumber;
             Skype = user.Skype;
-            Aktiv = user.CourseEnrollment.Select(ce => new KurzusViewModel(ce.Course));
-            ElvegezettKurzus = user.CourseEnrollment.Select(ce => new KurzusViewModel(ce.Course));
+
+            var kurzusok = user.CourseEnrollment.Where(ce => ce.Course.IsActive).ToList();
+
+            AktivKurzus = kurzusok.Where(ce => ce.Course.IsRunning).Select(ce => new KurzusViewModel(ce.Course));
+            ElvegezettKurzus = kurzusok.Where(ce => !ce.Course.IsRunning).Select(ce => new KurzusViewModel(ce.Course));
             Kompetencia = user.MemberCompetency.Select(mc => new KompetenciaViewModel(mc));
         }
 
@@ -38,7 +41,7 @@ namespace GeekPlatform.ViewModels.Profil
         public string Telefonszam { get; }
         public string Skype { get; } 
 
-        public IEnumerable<KurzusViewModel> Aktiv { get; }
+        public IEnumerable<KurzusViewModel> AktivKurzus { get; }
         public IEnumerable<KurzusViewModel> ElvegezettKurzus { get; }
 
         public IEnumerable<KompetenciaViewModel> Kompetencia { get; }
