@@ -957,7 +957,7 @@ namespace GeekPlatform.Models
                 {
                     CourseId = id,
                     WeekNumber = 1,
-                    ActualDate = DateTime.Now.AddDays(2),
+                    ActualDate = DateTime.Now.AddDays(-2),
                     Title = "Kezdeti alkalom",
                     Description = "Ismerkedes a HTML-el"
                 },
@@ -965,7 +965,7 @@ namespace GeekPlatform.Models
                 {
                     CourseId = id,
                     WeekNumber = 2,
-                    ActualDate = DateTime.Now.AddDays(9),
+                    ActualDate = DateTime.Now.AddDays(5),
                     Title = "CSS alapok",
                     Description = "CSS bevezeto"
                 }
