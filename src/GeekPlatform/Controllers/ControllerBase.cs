@@ -44,7 +44,7 @@ namespace GeekPlatform.Controllers
 
             if (model != null)
             {
-                model.User = User;
+                model.FelhasznaloNev = User.Name;
                 model.ControllerNev = controller.RouteData.Values["controller"].ToString();
             }
         }
