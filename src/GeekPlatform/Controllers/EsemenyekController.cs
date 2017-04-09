@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using GeekPlatform.Models;
 using GeekPlatform.Services;
 using GeekPlatform.ViewModels.Esemenyek;
@@ -20,7 +21,19 @@ namespace GeekPlatform.Controllers
         public async Task<IActionResult> Index()
         {
             var events = await _facebookService.GetEventsAsync("corvinusgeekclub");
-            EsemenyekViewModel vm = new EsemenyekViewModel();
+            EsemenyekViewModel vm = new EsemenyekViewModel
+            {
+                Esemenyek = events.Select(fbe => new EsemenyViewModel
+                {
+                    Id = fbe.Id,
+                    Cim = fbe.Name,
+                    CoverUrl = fbe.Cover?.Url,
+                    EndTime = fbe.EndTime,
+                    Helyszin = fbe.Place?.Name,
+                    Leiras = fbe.Description,
+                    StartTime = fbe.StartTime
+                })
+            };
             return View(vm);
         }
     }
