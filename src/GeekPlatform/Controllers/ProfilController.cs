@@ -17,20 +17,49 @@ namespace GeekPlatform.Controllers
     public class ProfilController : ControllerBase
     {
         // GET: /<controller>/
-        public ProfilController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
+        public ProfilController(UserManager<Profile> userManager, GeekDatabaseContext dbContext)
+            : base(userManager, dbContext)
         {
         }
 
         public IActionResult Index()
         {
-            ProfilViewModel pv = new ProfilViewModel(
-                DbContext.Profile
-                    .Include(p => p.CourseEnrollment).ThenInclude(ce => ce.Course)
-                    .Include(p => p.MemberCompetency).ThenInclude(mc => mc.Competency)
-                    .First(p => p == User)
-                );
-            return View(pv);
 
+            var user = DbContext.Profile
+                .Include(p => p.CourseEnrollment).ThenInclude(ce => ce.Course)
+                .Include(p => p.MemberCompetency).ThenInclude(mc => mc.Competency)
+                .First(p => p == this.User);
+
+            var kurzusok = user.CourseEnrollment.Where(ce => ce.Course.IsActive).ToList();
+
+            ProfilViewModel pv = new ProfilViewModel
+            {
+                Nev = user.Name,
+                PozicioTeamTagsag = user.TeamMember,
+                TagsagKezdete = user.MembershipStart,
+                Munkahely = user.Workplace,
+                Email = user.Email,
+                Slack = user.Slack,
+                TartozkodasiHely = user.Address,
+                Ajandek = user.Birthday,
+                Telefonszam = user.PhoneNumber,
+                Skype = user.Skype,
+                AktivKurzus =
+                    kurzusok.Where(ce => ce.Course.IsRunning)
+                        .Select(ce => new KurzusViewModel {KurzusNev = ce.Course.CourseName}),
+                ElvegezettKurzus =
+                    kurzusok.Where(ce => !ce.Course.IsRunning)
+                        .Select(ce => new KurzusViewModel {KurzusNev = ce.Course.CourseName}),
+                Kompetencia =
+                    user.MemberCompetency.Select(
+                        mc =>
+                            new KompetenciaViewModel
+                            {
+                                KompetenciaNev = mc.Competency.CompetencyName,
+                                KompetenciaSzint = mc.CompetencyLvl
+                            })
+            };
+            return View(pv);
         }
     }
 }
