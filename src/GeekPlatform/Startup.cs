@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using GeekPlatform.Models;
+using System.Globalization;
 
 namespace GeekPlatform
 {
@@ -18,6 +19,8 @@ namespace GeekPlatform
     {
         public Startup(IHostingEnvironment env)
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("hu-HU");
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)

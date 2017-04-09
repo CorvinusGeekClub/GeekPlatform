@@ -369,7 +369,7 @@ margin-right:20px;
 
 hr{
   border-color: #BBB;
-  border-top: 2px solid;
+  border-top: 1px solid;
 }
 .jobb{
   margin-top: 25px;
@@ -447,7 +447,7 @@ padding: 10px;
   margin-top:25px;
 }
 .panel-profile {
-	border: 2px solid #727072;
+	border: 1px solid #727072;
 	border-radius: 0;
 }
 
@@ -456,6 +456,30 @@ padding: 10px;
 	color: #fff;
 	border-radius: 0;
 	font-size: 24px;
+}
+
+@media only screen and (min-width : 992px) {
+    .flex-row, .flex-row > div[class*='col-md-'] {
+        display: flex;
+    }
+
+    .panel-profile {
+        width: -moz-available;
+        width: -webkit-fill-available;
+    }
+}
+
+.skill {
+    padding: 8px 5px;
+}
+
+.profil-kurzus {
+    line-height: 3em;
+}
+
+.profil-kurzus .fa {
+    vertical-align: middle;
+    margin-right: 5px;
 }
 
 .icon-group p {

@@ -3,7 +3,10 @@
 *@
 @{
 }
-<div class="row">
+@using GeekPlatform.ViewModels.Profil;
+@model ProfilViewModel
+
+<div class="row flex-row">
     <div class="col-md-5">
         <div class="panel panel-profile">
             <div class="panel-body">
@@ -15,19 +18,19 @@
         <div class="panel panel-profile">
             <div class="panel-heading">Általános adatok</div>
             <div class="panel-body">
-                <h3 style="margin-top: 0px;">Név</h3>
-                <h4><em>pozíció, team tagság</em></h4>
+                <h3 style="margin-top: 0px;">@Model.Nev</h3>
+                <h4><em>@Model.PozicioTeamTagsag</em></h4>
                 <hr>
                 <div class="row">
                     <div class="col-xs-4">
                         <p>Tagság kezdete:</p>
-                        <p>Tagság várható vége:</p>
+                        <!--<p>Tagság várható vége:</p> -->
                         <p>Munkahely, pozíció:</p>
                     </div>
                     <div class="col-xs-8">
-                        <p>Teszt szöveg, ami elég hosszú</p>
-                        <p>Teszt szöveg, ami elég hosszú</p>
-                        <p>Teszt szöveg, ami elég hosszú</p>
+                        <p>@Model.TagsagKezdete.ToString("Y")</p>
+                        <!-- <p>@Model.TagsagVege</p> -->
+                        <p>@Model.Munkahely</p>
                     </div>
                 </div>
                 <hr>
@@ -35,29 +38,29 @@
                     <div class="col-sm-6">
                         <div class="icon-group">
                             <i class="fa fa-envelope-o"></i>
-                            <p>Email info</p>
+                            <p>@Model.Email</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-slack"></i>
-                            <p>Slack info</p>
+                            <p>@Model.Slack</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-map-marker"></i>
-                            <p>Tartózkodási hely infó</p>
+                            <p>@Model.TartozkodasiHely</p>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="icon-group">
                             <i class="fa fa-gift"></i>
-                            <p>Ajándék</p>
+                            <p>@Model.Ajandek?.ToString("d")</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-mobile-phone"></i>
-                            <p>Telefon</p>
+                            <p>@Model.Telefonszam</p>
                         </div>
                         <div class="icon-group">
                             <i class="fa fa-skype"></i>
-                            <p>Skype</p>
+                            <p>@Model.Skype</p>
                         </div>
                     </div>
                 </div>
@@ -65,30 +68,28 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row flex-row">
     <div class="col-md-5">
         <div class="panel panel-profile">
             <div class="panel-heading">Kurzusok</div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <h4>Ebben a félévben aktív:</h4>
+                <h4>Aktív:</h4>
+                @foreach (var c in Model.AktivKurzus)
+                {
+                    <div class="profil-kurzus">
+                        <i class="fa fa-2x fa-book"></i>
+                        @c.KurzusNev
                     </div>
-                    <div class="col-xs-6">
-                        <p><i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i></p>
-                    </div>
-                </div>
+                }
                 <hr>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h4>Elvégzett kurzusok:</h4>
+                <h4>Elvégzett kurzusok:</h4>
+                @foreach (var c in Model.ElvegezettKurzus)
+                {
+                    <div class="profil-kurzus">
+                        <i class="fa fa-2x fa-book"></i>
+                        @c.KurzusNev
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 course-block">
-                        <p><i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i> <i class="fa fa-3x fa-book"></i></p>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -96,26 +97,28 @@
         <div class="panel panel-profile">
             <div class="panel-heading">Skillek</div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <h4>Grafika:</h4>
-                        <h4>UX design:</h4>
-                        <h4>Webfejlesztés:</h4>
-                        <h4>Még valami:</h4>
+                @foreach (var c in Model.Kompetencia)
+                {
+                    <div class="row skill">
+                        <div class="col-xs-5">
+                            @c.KompetenciaNev:
+                        </div>
+                        <div class="col-xs-7">
+                            <div>
+                                @for (int i = 0; i < c.KompetenciaSzint; i++)
+                                {
+                                    <i class="fa fa-circle"></i>
+                                }
+                                @for (int i = c.KompetenciaSzint; i < 5; i++)
+                                {
+                                    <i class="fa fa-circle-o"></i>
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-8">
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                        <h4><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i> <i class="fa fa-circle-o"></i></h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <hr>
-                        <h4><em>Egyéb dolgok felsorolása</em></h4>
-                    </div>
-                </div>
+                }
+                <hr>
+                <em>Egyéb dolgok felsorolása</em>
             </div>
         </div>
     </div>
