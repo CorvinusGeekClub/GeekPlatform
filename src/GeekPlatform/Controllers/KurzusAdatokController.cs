@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,18 +37,41 @@ namespace GeekPlatform.Controllers
                 return BadRequest();
             }
 
-            Course kurzus = DbContext.Course.Where(c => c.IsActive && !c.IsRunning && c.CourseId == id).FirstOrDefault();
+            Course kurzus = DbContext.Course
+                .Include(c => c.CourseEnrollment).ThenInclude(ce => ce.Profile)
+                .Include(c => c.CourseThematics)
+                .FirstOrDefault(c => c.IsActive && !c.IsRunning && c.CourseId == id);
 
             if (kurzus == null)
             {
                 return NotFound();
             }
-
-            IEnumerable<CourseEnrollment> jelentkezesek = DbContext.CourseEnrollment
-                .Include(ce => ce.Course)
-                .Include(ce => ce.Profile);            
+            
             IEnumerable<CourseThematics> tematika = DbContext.CourseThematics;
-            KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel(kurzus, jelentkezesek, tematika);
+            KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel
+            {
+                Nev = kurzus.CourseName,
+                Leiras = kurzus.DescriptionLong,
+                Oktatok = kurzus.CourseEnrollment
+                    .Where(enrollment => enrollment.IsInstructor)
+                    .Select(p => p.Profile)
+                    .ToList()
+                    .Select(o => new OktatoViewModel
+                    {
+                        Nev = o.Name,
+                        EMail = o.Email,
+                        Pozicio = o.Workplace,
+                        Telefon = o.PhoneNumber
+                    }),
+                KurzusTematika = kurzus.CourseThematics
+                    .ToList()
+                    .Select(t => new KurzusTematikaViewModel
+                    {
+                        Datum = t.ActualDate.ToString("d"),
+                        Het = t.WeekNumber,
+                        Leiras = t.Description
+                    })
+            };
             return View(viewModel);
 
         }

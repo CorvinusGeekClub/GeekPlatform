@@ -9,22 +9,9 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
 {
     public class KurzusAdatokViewModel : ViewModelBase
     {
-        public String Nev { get; }
-        public String Leiras { get; }
-        public IEnumerable<OktatoViewModel> Oktatok { get; }
-        public IEnumerable<KurzusTematikaViewModel> KurzusTematika { get; }
-
-        public KurzusAdatokViewModel(Course kurzus, IEnumerable<CourseEnrollment> jelentkezesek, IEnumerable<CourseThematics> tematika)
-        {
-            Nev = kurzus.CourseName;
-            Leiras = kurzus.DescriptionLong;
-            IEnumerable<Profile> oktatoResztvevok = jelentkezesek
-                .Where(enrollment => enrollment.IsInstructor
-                    && enrollment.CourseId == kurzus.CourseId)
-                .Select(p => p.Profile);
-            Oktatok = oktatoResztvevok.Select(o => new OktatoViewModel(o)).ToList();
-            IEnumerable<CourseThematics> kurzusTematikaLista = tematika.Where(thematics => thematics.CourseId == kurzus.CourseId);
-            KurzusTematika = kurzusTematikaLista.Select(t => new KurzusTematikaViewModel(t)).ToList();
-        }
+        public String Nev { get; set; }
+        public String Leiras { get; set; }
+        public IEnumerable<OktatoViewModel> Oktatok { get; set; }
+        public IEnumerable<KurzusTematikaViewModel> KurzusTematika { get; set; }
     }
 }
