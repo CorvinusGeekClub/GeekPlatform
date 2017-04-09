@@ -13,7 +13,7 @@ namespace GeekPlatform.Services
     {
         private const string URL_BASE = "https://graph.facebook.com/v2.8";
         private readonly String _appID = "233932450419402";
-        private readonly String _appSecret = "1bb597ba7bc4a9939da1d4d3b699f816";
+        private readonly String _appSecret;
 
         public FacebookService(string appSecret)
         {
