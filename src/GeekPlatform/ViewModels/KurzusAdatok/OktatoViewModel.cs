@@ -8,17 +8,9 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
 {
     public class OktatoViewModel
     {
-        public String Nev { get; }
-        public String Pozicio { get; }
-        public String EMail { get; }
-        public String Telefon { get; }
-
-        public OktatoViewModel(Profile profile)
-        {
-            Nev = profile.Name;
-            Pozicio = profile.Workplace;
-            EMail = profile.Email;
-            Telefon = profile.PhoneNumber;
-        }
+        public String Nev { get; set; }
+        public String Pozicio { get; set; }
+        public String EMail { get; set; }
+        public String Telefon { get; set; }
     }
 }

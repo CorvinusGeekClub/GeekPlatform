@@ -8,15 +8,8 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
 {
     public class KurzusTematikaViewModel
     {
-        public int Het { get; }
-        public String Datum { get; }
-        public String Leiras { get; }
-
-        public KurzusTematikaViewModel(CourseThematics tematika)
-        {
-            this.Het = tematika.WeekNumber;            
-            this.Datum = tematika.ActualDate.Year.ToString() + "." + tematika.ActualDate.Month.ToString("00") + "." + tematika.ActualDate.Day.ToString("00") + ".";
-            this.Leiras = tematika.Description;
-        }
+        public int Het { get; set; }
+        public String Datum { get; set; }
+        public String Leiras { get; set; }
     }
 }

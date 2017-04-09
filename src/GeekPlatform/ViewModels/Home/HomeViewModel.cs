@@ -8,7 +8,7 @@ namespace GeekPlatform.ViewModels.Home
 {
     public class HomeViewModel : ViewModelBase
     {
-        public HomeViewModel(Profile user) : base(user)
+        public HomeViewModel()
         {
         }
     }

@@ -19,7 +19,7 @@ namespace GeekPlatform.Controllers
 
         public IActionResult Index()
         {
-            return View(new HomeViewModel(User));
+            return View(new HomeViewModel());
         }
 
         public IActionResult About()

@@ -8,14 +8,7 @@ namespace GeekPlatform.ViewModels.Profil
 {
     public class KompetenciaViewModel
     {
-        public string KompetenciaNev { get; }
-        public int KompetenciaSzint { get; }
-
-        public KompetenciaViewModel(MemberCompetency m)
-        {
-            KompetenciaNev = m.Competency.CompetencyName;
-            KompetenciaSzint = m.CompetencyLvl;
-    }
-        
+        public string KompetenciaNev { get; set; }
+        public int KompetenciaSzint { get; set; }
     }
 }
