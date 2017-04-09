@@ -61,7 +61,7 @@ namespace GeekPlatform
                 .AddEntityFrameworkStores<GeekDatabaseContext, int>()
                 .AddDefaultTokenProviders();
 
-            services.AddSingleton<FacebookService>(new FacebookService(Configuration["FACEBOOK_TOKEN"]));
+            services.AddSingleton<FacebookService>(new FacebookService(Configuration["FACEBOOK_SECRET"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
