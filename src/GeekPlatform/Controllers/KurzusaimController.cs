@@ -33,7 +33,29 @@ namespace GeekPlatform.Controllers
            
             IEnumerable<Course> passzivKurzusok = kurzusok.Where(c => !c.IsRunning).ToList();
 
-            KurzusaimViewModel vm = new KurzusaimViewModel(aktivKurzusok, passzivKurzusok);
+            KurzusaimViewModel vm = new KurzusaimViewModel
+            {
+                AktivKurzusok = aktivKurzusok.Select(c => new KurzusViewModel
+                {
+                    AktualisTematika = new KurzusTematikaViewModel
+                    {
+                        Datum = c.CourseThematics.LastOrDefault(t => t.ActualDate < DateTime.Now)?.ActualDate.ToString("g"),
+                        Temakor = c.CourseThematics.LastOrDefault(t => t.ActualDate < DateTime.Now)?.Title
+                    },
+                    KovetkezoTematika = new KurzusTematikaViewModel
+                    {
+                        Datum = c.CourseThematics.LastOrDefault(t => t.ActualDate > DateTime.Now)?.ActualDate.ToString("g"),
+                        Temakor = c.CourseThematics.LastOrDefault(t => t.ActualDate > DateTime.Now)?.Title
+                    },
+                    Leiras = c.DescriptionLong,
+                    Nev = c.CourseName
+                }),
+                PasszivKurzusok = passzivKurzusok.Select(c => new KurzusViewModel
+                {
+                    Leiras = c.DescriptionLong,
+                    Nev = c.CourseName
+                })
+            };
 
             return View(vm);
         }
