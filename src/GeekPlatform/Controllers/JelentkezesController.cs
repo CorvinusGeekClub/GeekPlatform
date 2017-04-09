@@ -27,23 +27,26 @@ namespace GeekPlatform.Controllers
         // GET: /<controller>/
         public IActionResult Index(bool enrolled)
         {
-            var vm = new JelentkezesViewModel();
-            vm.Courses = DbContext.Course
-                .Include(c => c.CourseEnrollment)
-                .ThenInclude(enr => enr.Profile)
-                .Where(s => s.IsActive && s.SignUpDeadline > DateTime.Now)
-                .ToList()
-                .Select(c => new CourseViewModel
-                {
-                    CourseName = c.CourseName,
-                    Instructor =
-                        string.Join(", ", c.CourseEnrollment.Where(d => d.IsInstructor).Select(d => d.Profile.Name)),
-                    ImgUrl = c.IconFileName,
-                    Description = c.DescriptionShort,
-                    CourseId = c.CourseId,
-                    IsWorkshop = c.IsWorkshop,
-                    IsEnrolled = c.CourseEnrollment.Any(a => a.Profile == User)
-                });
+            var vm = new JelentkezesViewModel
+            {
+                Courses = DbContext.Course
+                    .Include(c => c.CourseEnrollment)
+                    .ThenInclude(enr => enr.Profile)
+                    .Where(s => s.IsActive && s.SignUpDeadline > DateTime.Now)
+                    .ToList()
+                    .Select(c => new CourseViewModel
+                    {
+                        CourseName = c.CourseName,
+                        Instructor =
+                            string.Join(", ", c.CourseEnrollment.Where(d => d.IsInstructor).Select(d => d.Profile.Name)),
+                        ImgUrl = c.IconFileName,
+                        Description = c.DescriptionShort,
+                        CourseId = c.CourseId,
+                        IsWorkshop = c.IsWorkshop,
+                        IsEnrolled = c.CourseEnrollment.Any(a => a.Profile == User)
+                    }),
+                Enrolled = enrolled
+            };
             return View(vm);
         }
 
