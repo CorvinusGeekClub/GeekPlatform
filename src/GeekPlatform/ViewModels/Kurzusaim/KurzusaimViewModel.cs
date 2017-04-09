@@ -11,7 +11,7 @@ namespace GeekPlatform.ViewModels.Kurzusaim
         public IEnumerable<KurzusViewModel> AktivKurzusok { get; }
         public IEnumerable<KurzusViewModel> PasszivKurzusok { get; }
 
-        public KurzusaimViewModel(IEnumerable<Course> aktivKurzusok, IEnumerable<Course> passzivkurzusok, Profile user) : base(user)
+        public KurzusaimViewModel(IEnumerable<Course> aktivKurzusok, IEnumerable<Course> passzivkurzusok)
         {
                 AktivKurzusok = aktivKurzusok.Select(a => new KurzusViewModel(a)).ToList();
                 PasszivKurzusok = passzivkurzusok.Select(p => new KurzusViewModel(p)).ToList();

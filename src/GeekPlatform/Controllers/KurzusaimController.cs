@@ -33,7 +33,7 @@ namespace GeekPlatform.Controllers
            
             IEnumerable<Course> passzivKurzusok = kurzusok.Where(c => !c.IsRunning).ToList();
 
-            KurzusaimViewModel vm = new KurzusaimViewModel(aktivKurzusok, passzivKurzusok, User);
+            KurzusaimViewModel vm = new KurzusaimViewModel(aktivKurzusok, passzivKurzusok);
 
             return View(vm);
         }

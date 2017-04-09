@@ -8,7 +8,7 @@ namespace GeekPlatform.ViewModels.Profil
 {
     public class ProfilViewModel : ViewModelBase
     {
-        public ProfilViewModel(Profile user) : base(user)
+        public ProfilViewModel(Profile user)
         {
             Nev = user.Name;
             PozicioTeamTagsag = user.TeamMember;

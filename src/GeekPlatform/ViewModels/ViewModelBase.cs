@@ -8,11 +8,10 @@ namespace GeekPlatform.ViewModels
 {
     public class ViewModelBase
     {
-        public String FelhasznaloNev { get; }
+        public Profile User { get; set; }
 
-        public ViewModelBase(Profile user)
-        {
-            FelhasznaloNev = user.Name;
-        }
+        public string ControllerNev { get; set; }
+
+        public String FelhasznaloNev => User.Name;
     }
 }
