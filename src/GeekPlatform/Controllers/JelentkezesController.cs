@@ -27,15 +27,24 @@ namespace GeekPlatform.Controllers
         // GET: /<controller>/
         public IActionResult Index(bool enrolled)
         {
-            
-            var vm = new JelentkezesViewModel(
-                DbContext.Course
+            var vm = new JelentkezesViewModel();
+            vm.Courses = DbContext.Course
                 .Include(c => c.CourseEnrollment)
                 .ThenInclude(enr => enr.Profile)
                 .Where(s => s.IsActive && s.SignUpDeadline > DateTime.Now)
-                .ToList(), enrolled, User);
+                .ToList()
+                .Select(c => new CourseViewModel
+                {
+                    CourseName = c.CourseName,
+                    Instructor =
+                        string.Join(", ", c.CourseEnrollment.Where(d => d.IsInstructor).Select(d => d.Profile.Name)),
+                    ImgUrl = c.IconFileName,
+                    Description = c.DescriptionShort,
+                    CourseId = c.CourseId,
+                    IsWorkshop = c.IsWorkshop,
+                    IsEnrolled = c.CourseEnrollment.Any(a => a.Profile == User)
+                });
             return View(vm);
-           
         }
 
         public IActionResult Jelentkezes(int Id)
