@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http
 @model GeekPlatform.ViewModels.ViewModelBase
+@{ String controller = this.ViewContext.RouteData.Values["controller"].ToString(); }
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,24 +20,18 @@
 
 </head>
 <body>
-<script>
-    // author: eranax
-    $(document).ready(function() {
-        $('a[href$="@Context.Request.Path"]').parent().addClass("active");
-    });
-</script>
 <div class="wrapper">
     <!--oldalsó menü-->
     <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm g-nest-navmenu" id="sidemenu">
         <ul class="nav navmenu-nav">
-            <li><a asp-controller="Home" asp-action="Index">Főoldal</a></li>
-            <li><a asp-controller="Oktatas" asp-action="Index">Oktatás</a></li>
-            <li><a asp-controller="Kurzusaim" asp-action="Index">Kurzusaim</a></li>
-            <li><a asp-controller="Jelentkezes" asp-action="Index">Jelentkezés</a></li>
-            <li><a asp-controller="Tudasbazis" asp-action="Index">Tudásbázis</a></li>
+            <li class="@("Home" == controller ? "active" : "")"><a asp-controller="Home" asp-action="Index">Főoldal</a></li>
+            <li class="@("Oktatas" == controller ? "active" : "")"><a asp-controller="Oktatas" asp-action="Index">Oktatás</a></li>
+            <li class="@("Kurzusaim" == controller ? "active" : "")"><a asp-controller="Kurzusaim" asp-action="Index">Kurzusaim</a></li>
+            <li class="@("Jelentkezes" == controller ? "active" : "")"><a asp-controller="Jelentkezes" asp-action="Index">Jelentkezés</a></li>
+            <li class="@("Tudasbazis" == controller ? "active" : "")"><a asp-controller="Tudasbazis" asp-action="Index">Tudásbázis</a></li>
             <li><a href="https://corvinusgeekclub.slack.com">Slack</a></li>
-            <li><a asp-controller="Galeria" asp-action="Index">Galéria</a></li>
-            <li><a asp-controller="Esemenyek" asp-action="Index">Események</a></li>
+            <li class="@("Galeria" == controller ? "active" : "")"><a asp-controller="Galeria" asp-action="Index">Galéria</a></li>
+            <li class="@("Esemenyek" == controller ? "active" : "")"><a asp-controller="Esemenyek" asp-action="Index">Események</a></li>
         </ul>
     </div>
     <!--fejléc & sidebar-icon-->
