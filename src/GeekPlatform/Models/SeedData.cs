@@ -840,9 +840,10 @@ namespace GeekPlatform.Models
                     IsAdmin = false,
                     IsActive = true
                 } };
-        
 
-            foreach (var p in profiles) {
+
+            foreach (var p in profiles)
+            {
                 await userManager.CreateAsync(p, PWD);
             }
 
@@ -860,7 +861,7 @@ namespace GeekPlatform.Models
                 IconFileName = "webf-1.png",
                 IsWorkshop = true,
                 IsActive = true,
-                IsRunning = false,
+                IsRunning = true,
                 SignUpDeadline = DateTime.Today.AddDays(3)
             },
 
@@ -1076,5 +1077,28 @@ namespace GeekPlatform.Models
             context.SaveChanges();
         }
 
+        private static void AddGalleries(GeekDatabaseContext context)
+        {
+            var evelyn = context.Profile.First(p => p.Name == "Evelyn Stevens");
+
+            context.GalleryAlbum.AddRange(new GalleryAlbum()
+            { Name = "Taggyűlés", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-6) },
+            new GalleryAlbum()
+            { Name = "Kirándulás", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-4) });
+
+            var album = context.GalleryAlbum.First(a => a.Name == "Taggyűlés");
+            for (int i = 1; i < 6; i++)
+            {
+                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"1-@{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i-50) });
+            }
+
+            album = context.GalleryAlbum.First(a => a.Name == "Kirándulás");
+            for (int i = 1; i < 6; i++)
+            {
+                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"2-@{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i) });
+            }
+
+            context.SaveChanges();
+        }
     }
 }

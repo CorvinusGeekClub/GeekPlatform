@@ -62,6 +62,8 @@
 
   <ItemGroup>
     <Folder Include="Views\Galeria\" />
+    <Folder Include="Views\GalerryAlbum\" />
+    <Folder Include="wwwroot\gallery-uploads\" />
   </ItemGroup>
 
 </Project>

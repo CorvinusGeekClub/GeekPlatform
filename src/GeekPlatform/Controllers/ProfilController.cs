@@ -21,7 +21,7 @@ namespace GeekPlatform.Controllers
             : base(userManager, dbContext)
         {
         }
-
+        
         public IActionResult Index()
         {
 
