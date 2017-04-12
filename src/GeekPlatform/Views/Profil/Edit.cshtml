@@ -1,0 +1,129 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using GeekPlatform.ViewModels.Profil;
+@model ProfilViewModel
+
+<form asp-action="Edit" class="form-inline">
+    <div class="row flex-row">
+        <div class="col-md-5">
+            <div class="panel panel-profile">
+                <div class="panel-body">
+                    <div class="profile-pic-big"><i class="fa fa-user-circle-o"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="panel panel-profile">
+                <div class="panel-heading">Általános adatok</div>
+                <div class="panel-body">
+                    <h3 style="margin-top: 0px;">@Model.Nev</h3>
+                    <h4><em>@Model.PozicioTeamTagsag</em></h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <p>Tagság kezdete:</p>
+                            <!--<p>Tagság várható vége:</p> -->
+                            <p>Munkahely, pozíció:</p>
+                        </div>
+                        <div class="col-xs-8">
+                            <p>@Model.TagsagKezdete.ToString("Y")</p>
+                            <!-- <p>@Model.TagsagVege</p> -->
+                            <p>@Model.Munkahely</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="icon-group">
+                                <i class="fa fa-envelope-o"></i>
+                                <input class="form-control" name="Email" value="@Model.Email" />
+                            </div>
+                            <div class="icon-group">
+                                <i class="fa fa-slack"></i>
+                                <p>@Model.Slack</p>
+                            </div>
+                            <div class="icon-group">
+                                <i class="fa fa-map-marker"></i>
+                                <p>@Model.TartozkodasiHely</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="icon-group">
+                                <i class="fa fa-gift"></i>
+                                <p>@Model.Ajandek?.ToString("d")</p>
+                            </div>
+                            <div class="icon-group">
+                                <i class="fa fa-mobile-phone"></i>
+                                <p>@Model.Telefonszam</p>
+                            </div>
+                            <div class="icon-group">
+                                <i class="fa fa-skype"></i>
+                                <p>@Model.Skype</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="row flex-row">
+    <div class="col-md-5">
+        <div class="panel panel-profile">
+            <div class="panel-heading">Kurzusok</div>
+            <div class="panel-body">
+                <h4>Aktív:</h4>
+                @foreach (var c in Model.AktivKurzus)
+                {
+                    <div class="profil-kurzus">
+                        <i class="fa fa-2x fa-book"></i>
+                        @c.KurzusNev
+                    </div>
+                }
+                <hr>
+                <h4>Elvégzett kurzusok:</h4>
+                @foreach (var c in Model.ElvegezettKurzus)
+                {
+                    <div class="profil-kurzus">
+                        <i class="fa fa-2x fa-book"></i>
+                        @c.KurzusNev
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="panel panel-profile">
+            <div class="panel-heading">Skillek</div>
+            <div class="panel-body">
+                @foreach (var c in Model.Kompetencia)
+                {
+                    <div class="row skill">
+                        <div class="col-xs-5">
+                            @c.KompetenciaNev:
+                        </div>
+                        <div class="col-xs-7">
+                            <div>
+                                @for (int i = 0; i < c.KompetenciaSzint; i++)
+                                {
+                                    <i class="fa fa-circle"></i>
+                                }
+                                @for (int i = c.KompetenciaSzint; i < 5; i++)
+                                {
+                                    <i class="fa fa-circle-o"></i>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <hr>
+                <em>Egyéb dolgok felsorolása</em>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-success" type="submit">Ok</button>
+</div>
+    </form>
