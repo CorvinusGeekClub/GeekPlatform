@@ -7,8 +7,9 @@ namespace GeekPlatform.ViewModels.Gallery
 {
     public class GalleryAlbumViewModel : ViewModelBase
     {
+        public int AlbumId { get; set; }
         public String AlbumName { get; set; }
         public String CreatorName { get; set; }
-        public String Location { get; set; }
+        public IEnumerable<String> Pictures { get; set; }
     }
 }

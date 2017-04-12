@@ -24,10 +24,30 @@ namespace GeekPlatform.Controllers
             {
                 Albums = albums.Select(a => new GalleryAlbumViewModel
                 {
+                    AlbumId = a.GalleryAlbumId,
                     AlbumName = a.Name,
-                    CreatorName = a.Creator.Name,
-                    Location = a.GalleryAlbumId.ToString()
+                    CreatorName = a.Creator.Name
                 })
+            };
+            return View(vm);
+        }
+
+        public IActionResult Album(int? id)
+        {
+            GalleryAlbum album = DbContext.GalleryAlbum
+                .Include(a => a.Creator)
+                .Include(a => a.GalleryPicture)
+                .FirstOrDefault(a=>a.GalleryAlbumId == id);
+            if (album == null)
+            {
+                return NotFound();
+            }
+            GalleryAlbumViewModel vm = new GalleryAlbumViewModel
+            {
+                AlbumId = album.GalleryAlbumId,
+                AlbumName = album.Name,
+                CreatorName = album.Creator.Name,
+                Pictures = album.GalleryPicture.Select(p => p.Filename)
             };
             return View(vm);
         }
