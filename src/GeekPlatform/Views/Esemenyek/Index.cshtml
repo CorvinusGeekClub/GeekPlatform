@@ -1,0 +1,20 @@
+﻿@using GeekPlatform.ViewModels.Esemenyek
+@model GeekPlatform.ViewModels.Esemenyek.EsemenyekViewModel
+
+@foreach (EsemenyViewModel i in Model.Esemenyek)
+{
+    <div class="row doboz">
+        <div class="row workshopcim"><h4>@i.Cim</h4></div>
+        <div class="row workshopoktato"><span>@i.Helyszin</span></div>
+
+        <div class="row">
+            <div class="col-md-2 kozep"><img class="kiskep" src="@i.CoverUrl"></div>
+            <div class="col-md-8 szoveg"><p>@i.Leiras</p></div>
+            <div class="col-md-2 kozep">
+                <a href="https://www.facebook.com/events/@i.Id" target='_blank' class="btn btn-lg">
+                    <i class="fa fa-facebook-square fa-3x"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
