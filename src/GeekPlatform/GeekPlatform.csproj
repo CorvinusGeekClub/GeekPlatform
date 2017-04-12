@@ -61,8 +61,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewModels\Galeria\" />
     <Folder Include="Views\Galeria\" />
-    <Folder Include="Views\GalerryAlbum\" />
     <Folder Include="wwwroot\gallery-uploads\" />
   </ItemGroup>
 

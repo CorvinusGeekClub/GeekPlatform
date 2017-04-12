@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeekPlatform.Controllers
 {
-    public class GalerryAlbumController : ControllerBase
+    public class GalleryAlbumController : ControllerBase
     {
-        public GalerryAlbumController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
+        public GalleryAlbumController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
         }
 

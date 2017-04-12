@@ -29,6 +29,7 @@ namespace GeekPlatform.Models
                     AddHomeworkUploads(context);
                     AddCompetencies(context);
                     AddMemberCompetencies(context);
+                    AddGalleries(context);
                 }
                 else
                 {
@@ -1082,17 +1083,18 @@ namespace GeekPlatform.Models
             var evelyn = context.Profile.First(p => p.Name == "Evelyn Stevens");
 
             context.GalleryAlbum.AddRange(new GalleryAlbum()
-            { Name = "Taggyűlés", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-6) },
+            { Name = "Taggyules", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-6) },
             new GalleryAlbum()
-            { Name = "Kirándulás", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-4) });
+            { Name = "Kirandulas", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-4) });
 
-            var album = context.GalleryAlbum.First(a => a.Name == "Taggyűlés");
+            context.SaveChanges();
+            var album = context.GalleryAlbum.First(a => a.Name == "Taggyules");
             for (int i = 1; i < 6; i++)
             {
                 album.GalleryPicture.Add(new GalleryPicture() { Filename = $"1-@{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i-50) });
             }
 
-            album = context.GalleryAlbum.First(a => a.Name == "Kirándulás");
+            album = context.GalleryAlbum.First(a => a.Name == "Kirandulas");
             for (int i = 1; i < 6; i++)
             {
                 album.GalleryPicture.Add(new GalleryPicture() { Filename = $"2-@{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i) });

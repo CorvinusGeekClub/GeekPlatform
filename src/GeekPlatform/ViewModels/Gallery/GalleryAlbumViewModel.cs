@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GeekPlatform.ViewModels.GalerryAlbum
+namespace GeekPlatform.ViewModels.Gallery
 {
-    public class GalerryAlbumViewModel : ViewModelBase
+    public class GalleryAlbumViewModel : ViewModelBase
     {
         public String AlbumName { get; set; }
         public String CreatorName { get; set; }
-        public String AlbumLocation { get; set; }
+        public String Location { get; set; }
     }
 }

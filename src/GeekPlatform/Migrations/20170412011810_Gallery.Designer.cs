@@ -8,9 +8,10 @@ using GeekPlatform.Models;
 namespace GeekPlatform.Migrations
 {
     [DbContext(typeof(GeekDatabaseContext))]
-    partial class GeekDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20170412011810_Gallery")]
+    partial class Gallery
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")

@@ -9,6 +9,7 @@ namespace GeekPlatform.Models
     public partial class GalleryPicture
     {
         public int GalleryPictureId { get; set; }
+        public int GalleryAlbumId { get; set; }
         public String Filename { get; set; }
         public String Caption { get; set; }
         public DateTime UploadedAt { get; set; }
