@@ -22,17 +22,18 @@ namespace GeekPlatform.Controllers
         {
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            ProfilViewModel pv = CreateVM(null);
+            ProfilViewModel pv = CreateVM(id);
             return View(pv);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Edit(int id,  ProfilViewModel vm)
+        public IActionResult Edit(int id, ProfilViewModel vm)
         {
-            return Redirect($"/Profil/{nameof(Edit)}/{vm.Nev}");
+            return Redirect($"/Profil/Index/{vm.Id}");
         }
+
         public IActionResult Edit(int? id)
         {
             if(id == null)
