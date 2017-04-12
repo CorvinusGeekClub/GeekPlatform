@@ -553,3 +553,90 @@ i.fa.fa-circle, i.fa.fa-circle-o {
   text-align:justify;
 }
 
+/*Főoldal*/
+h5.left {
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    left: 15px;
+}
+
+h5.right {
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    right: 15px;
+}
+
+.ribbon, .kozlemeny, .kurzusinfo, .projektinfo {
+    border: 1px solid black;
+    box-shadow: 5px 5px 2px rgb(176, 176, 173);
+}
+
+.infok, .ribbon {
+    height: 500px;
+    margin: 10px;
+}
+
+.kozlemeny {
+    height: 120px;
+    margin-top: 10px;
+}
+
+.kurzusinfo {
+    height: 150px;
+    margin-top: 10px;
+}
+
+.projektinfo {
+    height: 210px;
+    margin-top: 10px;
+}
+
+.miniribbon {
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 60px;
+    padding: 15px;
+}
+
+.fejlec {
+    background: #c0392b;
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+
+.leiras {
+    padding-top: 5px;
+    text-align: justify;
+}
+
+.ido {
+    float: right;
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+div.projektek.row.col-md-6 {
+    padding: 0px !important;
+}
+
+.bal {
+    padding-left: 30px;
+}
+
+.jobb {
+    padding-right: 30px;
+}
+
+.kozep {
+    padding: 15px;
+}
