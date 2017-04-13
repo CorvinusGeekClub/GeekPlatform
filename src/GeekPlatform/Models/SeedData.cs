@@ -50,7 +50,7 @@ namespace GeekPlatform.Models
             var profiles = new[] {
                 new Profile()
                 {
-                    Name = "Evelyn Stevens",
+                    Name = "Evelyn Stevenson",
                     TeamMember = "Oktatási team",
                     MembershipStart = new DateTime(2013, 1, 19),
                     UniStartYear = 2013,
@@ -855,9 +855,9 @@ namespace GeekPlatform.Models
             new Course()
             {
                 CourseName = "Webfejl 1",
-                DescriptionShort = "Webfejlesztés alapok",
-                DescriptionLong = "Webfejlesztés alapok: HTML, CSS",
-                IconFileName = "https://cdn0.iconfinder.com/data/icons/computer-web/512/9-512.png",
+                DescriptionShort = "Kezdjük az alapokkal, melyeknek ismeretével akár a sitebuild (lapépítés), akár a fejlesztés és programozás során is illik felvértezni magunk. A HTML és CSS leírónyelvek a weboldal szerkezeti vázának felépítéséhez kell. Az ide tartozó parancsok a HTML5 szabvány bevezetésével sokat bővült, de az alapok elsajátítása könnyen megvalósítható. Ez a tudás egy statikus weboldal felépítéséhez már elég, illetve a nagyobb fejlesztések során is a dinamikus weboldalak vázát, úgymond sablonjait szintén így készítik el.",
+                DescriptionLong = "HTML röviden, bevezetés a CSS-be (id-k, class-ok). A kurzust pedig egy mestermunkával zárjuk",
+                IconFileName = "http://www.rediansoftware.com/wp-content/uploads/2017/01/custome-web-development-icon.png",
                 IsWorkshop = true,
                 IsActive = true,
                 IsRunning = false,
@@ -869,7 +869,7 @@ namespace GeekPlatform.Models
                 CourseName = "Python workshop",
                 DescriptionShort = "Python workshop.py3",
                 DescriptionLong = "Python workshop py3-al",
-                IconFileName = "pyc-4.jpg",
+                IconFileName = "https://cdn-img.easyicon.net/png/5404/540419.gif",
                 IsWorkshop = true,
                 IsActive = true,
                 IsRunning = true,
@@ -879,8 +879,8 @@ namespace GeekPlatform.Models
             new Course()
             {
                 CourseName = "Grafika 1",
-                DescriptionShort = "Grafika 1 Adobe CC-al",
-                DescriptionLong = "Grafika 1 Adobe CC-al a cloudon",
+                DescriptionShort = "A Photoshop ma a nyomdai előkészítés és képfeldolgozás legelterjedtebb programja, tudása miatt is a professzionális fotósok, webdesignerek, filmes utómunkával foglalkozó szakemberek megbecsült eszköze. A CS3 verziótól kezdve két változatban kerül forgalomba Standard és Extended.Utóbbi a Standard verzió minden szolgáltatásán kívül fejlett eszközöket tartalmaz a 3D modellezés és mozgó képek szerkesztéséhezA Standard verziót a fotósok, webes szakemberek és az amatőr felhasználóknak, míg az Extended bővített kiadást a filmesek, mérnökök és egészségügyi dolgozók számára ajánlja a gyártó.",
+                DescriptionLong = "A Photoshop rétegekkel dolgozik. Ahhoz, hogy ennek lényegét megértsük, képzeljünk el négy üveglapot, amelyek mindegyikre mást rajzolunk egy filctollal. Az egyikre mondjuk egy fej körvonalát, a másikra szemet, a harmadikra fület, a negyedikre pedig egy orrot. Ha ezeket egy üveglapra rajzoltuk volna, kész lenne ugyan a fejünk, de ha elrontjuk, nem lehetne mondjuk az orrot egy picivel lejjebb csúsztatni. Szerencsére mi minden részt külön üveglapra rajzoltunk, így ha ezeket egymás fölé helyezzük, megkapjuk a kész fejet, és még külön is tudjuk mozgatni az arc elemeit hiszen mindegyik egy - egy üveglapon helyezkedik el. Photoshopban hasonlóképpen működnek a rétegek.Egy - egy üveglapot itt ? rétegnek\" vagy layernek neveznek. Minden rétegnek vannak módosítható tulajdonságai: átméretezhető, áttetszővé tehető valamennyire vagy teljesen, rajzolhatunk rá, radírozhatunk rajta stb. Az aktuális rétegen elvégzett módosítások nem lesznek hatással az alatta vagy felette lévő üveglapra (rétegekre).",
                 IconFileName = "https://chakralinux.org/wiki/images/5/53/Applications-graphics.png",
                 IsWorkshop = false,
                 IsActive = true,
@@ -891,8 +891,8 @@ namespace GeekPlatform.Models
             new Course()
             {
                 CourseName = "UX design",
-                DescriptionShort = "UX design gyakorlatok",
-                DescriptionLong = "UX design gyakorlatok: web 2.0",
+                DescriptionShort = "X, az meg micsoda? (Újabb hókusz- pókusz Nos, az UX pedig a felhasználói élmény, azaz user experience.  A felhasználói élmény nem más, mint azok a benyomások, amik a felhasználót a weboldal használata közben érik. Flottul működik minden? Amit kattinthatónak hisz a felhasználó, az valóban kattintható is? És ha igen, oda navigál általa, ahova gondolta, hogy navigálni fog? És így tovább…",
+                DescriptionLong = "X, az meg micsoda? (Újabb hókusz- pókusz Nos, az UX pedig a felhasználói élmény, azaz user experience.  A felhasználói élmény nem más, mint azok a benyomások, amik a felhasználót a weboldal használata közben érik. Flottul működik minden? Amit kattinthatónak hisz a felhasználó, az valóban kattintható is? És ha igen, oda navigál általa, ahova gondolta, hogy navigálni fog? És így tovább…",
                 IconFileName = "http://www.iconarchive.com/download/i34283/iconshock/brilliant-graphics/fill.ico",
                 IsWorkshop = false,
                 IsActive = true,
@@ -905,7 +905,7 @@ namespace GeekPlatform.Models
                 CourseName = "BigData 1",
                 DescriptionShort = "BigData 1",
                 DescriptionLong = "BigData 1 a felhőben",
-                IconFileName = "cloudy.png",
+                IconFileName = "https://is5-ssl.mzstatic.com/image/thumb/Purple122/v4/91/61/c9/9161c94c-0927-eac9-520e-8035304d11a0/source/256x256bb.jpg",
                 IsWorkshop = true,
                 IsActive = false,
                 IsRunning = false,
@@ -914,9 +914,17 @@ namespace GeekPlatform.Models
 
             new Course()
             {
-                CourseName = "Machine Learning",
-                DescriptionShort = "Machine Learning with IBM watson",
-                DescriptionLong = "Hogy érts hozzá, beleláss mélyebben a machine learning rejtelmeiben ha igazán érdekel az elméleti részek iránt",
+                CourseName = "Machine Learning (IBM Watson)",
+                DescriptionShort = @"A gépi tanulás a Mesterséges Intelligencia(MI) egyik ága,
+                olyan rendszerekkel foglalkoznak,
+                melyek tanulni képesek,
+                azaz tapasztalatokból tudást generálnak.A gyakorlatban ez azt jelenti,
+                hogy a rendszer példa adatok,
+                minták alapján képes önállóan,
+                vagy emberi segítséggel szabályszerűségeket / szabályokat felismerni / meghatározni.A rendszer tehát nem csupán betanulja „kívülről” mintákat,
+                hanem képes ezek alapján olyan általánosításra,
+                ami alapján – a tanulási szakasz végeztével – ismeretlen adatokra vonatkozólag is „helyes” döntéseket tud hozni.",
+                DescriptionLong = "A gépi tanulás a Mesterséges Intelligencia (MI) egyik ága, olyan rendszerekkel foglalkoznak, melyek tanulni képesek, azaz tapasztalatokból tudást generálnak. A gyakorlatban ez azt jelenti, hogy a rendszer példa adatok, minták alapján képes önállóan, vagy emberi segítséggel szabályszerűségeket/szabályokat felismerni/meghatározni. A rendszer tehát nem csupán betanulja „kívülről” mintákat, hanem képes ezek alapján olyan általánosításra, ami alapján – a tanulási szakasz végeztével – ismeretlen adatokra vonatkozólag is „helyes” döntéseket tud hozni.",
                 IconFileName = "http://www.crescointl.com/wp-content/uploads/2016/05/ibm.png",
                 IsWorkshop = true,
                 IsActive = true,
@@ -1058,8 +1066,8 @@ namespace GeekPlatform.Models
                 new List<String>() { "Howard Freeman", "Webfejlesztes", "5" },
                 new List<String>() { "Howard Freeman", "UX design", "3" },
                 new List<String>() { "Howard Freeman", "Grafika", "4" },
-                new List<String>() { "Evelyn Stevens", "UX design", "5" },
-                new List<String>() { "Evelyn Stevens", "Webfejlesztes", "1" },
+                new List<String>() { "Evelyn Stevenson", "UX design", "5" },
+                new List<String>() { "Evelyn Stevenson", "Webfejlesztes", "1" },
                 new List<String>() { "Cheryl Wallace", "Grafika", "4" },
                 new List<String>() { "Cheryl Wallace", "Webfejlesztes", "2" },
                 new List<String>() { "Roger Romero", "Webfejlesztes", "3" },
