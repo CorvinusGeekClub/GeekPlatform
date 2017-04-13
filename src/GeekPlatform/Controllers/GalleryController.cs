@@ -19,6 +19,7 @@ namespace GeekPlatform.Controllers
         public IActionResult Index()
         {
             IEnumerable<GalleryAlbum> albums = DbContext.GalleryAlbum
+                .Include(a => a.GalleryPicture)
                 .Include(a => a.Creator);
             GalleryViewModel vm = new GalleryViewModel
             {
@@ -32,6 +33,18 @@ namespace GeekPlatform.Controllers
             return View(vm);
         }
 
+        public String JsTemplateFor(GalleryAlbumViewModel vm)
+        {
+            var result = "var items = [";
+            
+            for (int i = 0; i < vm.Pictures.Count(); i++)
+            {
+                result += $"{{ src: '/gallery-uploads/{vm.Pictures.ElementAt(i)}', msrc: '/gallery-uploads/{vm.Thumbnails.ElementAt(i)}', w: 4032, h: 3024 }},";
+            }
+
+            result += " ];";
+            return result;
+        }
         public IActionResult Album(int? id)
         {
             GalleryAlbum album = DbContext.GalleryAlbum
@@ -47,8 +60,10 @@ namespace GeekPlatform.Controllers
                 AlbumId = album.GalleryAlbumId,
                 AlbumName = album.Name,
                 CreatorName = album.Creator.Name,
-                Pictures = album.GalleryPicture.Select(p => p.Filename)
+                Thumbnails = album.GalleryPicture.Where(p => p.Album == album).Select(p => p.Filename),
+                Pictures = album.GalleryPicture.Where(p => p.Album == album).Select(p => p.Filename),
             };
+            vm.JsTemplate = JsTemplateFor(vm); // `this` could work too?
             return View(vm);
         }
     }

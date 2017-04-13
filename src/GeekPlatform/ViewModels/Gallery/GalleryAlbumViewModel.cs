@@ -10,6 +10,8 @@ namespace GeekPlatform.ViewModels.Gallery
         public int AlbumId { get; set; }
         public String AlbumName { get; set; }
         public String CreatorName { get; set; }
+        public IEnumerable<String> Thumbnails { get; set; }
         public IEnumerable<String> Pictures { get; set; }
+        public String JsTemplate { get; set; }
     }
 }

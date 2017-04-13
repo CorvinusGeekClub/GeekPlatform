@@ -1091,13 +1091,13 @@ namespace GeekPlatform.Models
             var album = context.GalleryAlbum.First(a => a.Name == "Taggyules");
             for (int i = 1; i < 6; i++)
             {
-                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"1-@{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i-50) });
+                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"1-sd{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i-50) });
             }
 
             album = context.GalleryAlbum.First(a => a.Name == "Kirandulas");
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i < 5; i++)
             {
-                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"2-@{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i) });
+                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"2-sd{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i) });
             }
 
             context.SaveChanges();

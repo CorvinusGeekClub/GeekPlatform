@@ -9,8 +9,8 @@
 <h1>Albumok</h1>
 @foreach (GalleryAlbumViewModel album in Model.Albums)
 {
-
-    <h3>@album.AlbumName</h3>
-    <a asp-controller="Gallery" asp-action="Album" asp-route-id="@album.AlbumId">Go</a>
-    <h6>by @album.CreatorName</h6>
+    
+        <h2><a asp-controller="Gallery" asp-action="Album" asp-route-id="@album.AlbumId">@album.AlbumName</a></h2>
+        <h4>@album.CreatorName</h4>
+    
 }
