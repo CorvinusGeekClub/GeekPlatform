@@ -860,20 +860,20 @@ namespace GeekPlatform.Models
                 IconFileName = "http://www.rediansoftware.com/wp-content/uploads/2017/01/custome-web-development-icon.png",
                 IsWorkshop = true,
                 IsActive = true,
-                IsRunning = false,
-                SignUpDeadline = DateTime.Today.AddDays(3)
+                IsRunning = true,
+                SignUpDeadline = DateTime.Today.AddDays(15)
             },
 
             new Course()
             {
                 CourseName = "Python workshop",
-                DescriptionShort = "Python workshop.py3",
-                DescriptionLong = "Python workshop py3-al",
+                DescriptionShort = "Python workshop.pyPython workshop.py3Python workshop.py3Python workshop.py3Python workshop.py33",
+                DescriptionLong = "Python workshop py3-alPython workshop py3-alPython workshop py3-alPython workshop py3-alPython workshop py3-al",
                 IconFileName = "https://cdn-img.easyicon.net/png/5404/540419.gif",
                 IsWorkshop = true,
                 IsActive = true,
                 IsRunning = true,
-                SignUpDeadline = DateTime.Today.AddDays(-2)
+                SignUpDeadline = DateTime.Today.AddDays(-5)
             },
 
             new Course()
@@ -884,7 +884,7 @@ namespace GeekPlatform.Models
                 IconFileName = "https://chakralinux.org/wiki/images/5/53/Applications-graphics.png",
                 IsWorkshop = false,
                 IsActive = true,
-                IsRunning = false,
+                IsRunning = true,
                 SignUpDeadline = DateTime.Today.AddDays(20)
             },
 
@@ -966,8 +966,8 @@ namespace GeekPlatform.Models
                     CourseId = id,
                     WeekNumber = 1,
                     ActualDate = DateTime.Now.AddDays(-2),
-                    Title = "Kezdeti alkalom",
-                    Description = "Ismerkedes a HTML-el"
+                    Title = "Ismerkedés a HTML-el",
+                    Description = "Ismerkedés a HTML-el"
                 },
                 new CourseThematics()
                 {
@@ -975,9 +975,45 @@ namespace GeekPlatform.Models
                     WeekNumber = 2,
                     ActualDate = DateTime.Now.AddDays(5),
                     Title = "CSS alapok",
-                    Description = "CSS bevezeto"
+                    Description = "CSS bevezető"
+                },
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 3,
+                    ActualDate = DateTime.Now.AddDays(12),
+                    Title = "CSS",
+                    Description = "Advanced CSS"
+                },
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 4,
+                    ActualDate = DateTime.Now.AddDays(19),
+                    Title = "SASS",
+                    Description = "Bevezetés a SASS-be"
                 }
                 );
+
+            Course p = context.Course.First(c => c.CourseName == "Python workshop");
+            id = p.CourseId;
+            context.CourseThematics.AddRange(
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 1,
+                    ActualDate = DateTime.Now.AddDays(-2),
+                    Title = "Ismerkedés a Python-al",
+                    Description = "Ismerkedés a Python-al"
+                },
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 2,
+                    ActualDate = DateTime.Now.AddDays(5),
+                    Title = "Python alapok",
+                    Description = "Alap típusok, Operátorok"
+                });
             context.SaveChanges();
         }
 
@@ -995,6 +1031,19 @@ namespace GeekPlatform.Models
             context.CourseEnrollment.Add(new CourseEnrollment()
             {
                 ProfileId = 1,
+                CourseId = 1,
+                IsInstructor = true
+            });
+
+            context.CourseEnrollment.Add(new CourseEnrollment()
+            {
+                ProfileId = 1,
+                CourseId = 2,
+                IsInstructor = true
+            });
+            context.CourseEnrollment.Add(new CourseEnrollment()
+            {
+                ProfileId = 2,
                 CourseId = 1,
                 IsInstructor = true
             });
