@@ -438,6 +438,7 @@ hr{
 }
 
 .jelentkezz{
+  font-size: 16px;
   background-color:rgb(39, 140, 177);
   color: #FFF;
   font-weight: normal;
@@ -445,9 +446,10 @@ hr{
   margin-right:30px;
   margin-top:25px;
 }
+
 .panel-profile {
-	border: 1px solid #727072;
-	border-radius: 0;
+    border: 1px solid #727072;
+    border-radius: 0;
 }
 
 .panel-profile .panel-heading {

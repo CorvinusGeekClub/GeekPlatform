@@ -11,6 +11,7 @@ namespace GeekPlatform.ViewModels.Kurzusaim
         public String Leiras { get; set; }
         public KurzusTematikaViewModel AktualisTematika { get; set; }
         public KurzusTematikaViewModel KovetkezoTematika { get; set; }
-        
+        public int Id { get; set; }
+
     }
 }
