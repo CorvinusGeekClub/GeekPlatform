@@ -8,10 +8,11 @@ namespace GeekPlatform.ViewModels.Profil
 {
     public class ProfilViewModel : ViewModelBase
     {
+        public int Id { get; set; }
         public string Nev { get; set; }
         public string PozicioTeamTagsag {get; set; }
-        public DateTime TagsagKezdete { get; set; }
-        public DateTime TagsagVege { get; set; }
+        public string TagsagKezdete { get; set; }
+        public string TagsagVege { get; set; }
         public string Munkahely { get; set; }
         public string Email { get; set; }
         public string Slack { get; set; }

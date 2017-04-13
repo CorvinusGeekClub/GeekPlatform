@@ -1,0 +1,157 @@
+﻿@using GeekPlatform.ViewModels.Profil;
+@model ProfilViewModel
+
+<form asp-action="Edit">
+<div class="row flex-row">
+    <div class="col-md-5">
+        <div class="panel panel-profile">
+            <div class="panel-body">
+                <div class="profile-pic-big"><i class="fa fa-user-circle-o"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="panel panel-profile">
+            <div class="panel-heading">
+                Általános adatok
+                <button class="btn btn-success" type="submit"><i class="fa fa-lg fa-check"></i></button>
+            </div>
+            <div class="panel-body">
+                <h3 style="margin-top: 0"><input name="Nev" value="@Model.Nev" placeholder="Név" class="form-control" /></h3>
+                <h4><em>@Model.PozicioTeamTagsag</em></h4>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-4 form-group">
+                        <label>Tagság kezdete:</label>
+                        <input name="TagsagKezdete" value="@Model.TagsagKezdete" placeholder="TagsagKezdete" class="form-control" />
+                </div>
+                        <div class="col-xs-8 form-group">
+                        <label>
+                            Munkahely
+                        </label>
+                        <input name="Munkahely" value="@Model.Munkahely" placeholder="Munkahely" class="form-control" />
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-envelope-o"></i> E-mail
+                        </label>
+                        <input name="Email" value="@Model.Email" placeholder="Email cím" class="form-control" />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-gift"></i> Sületésnap
+                        </label>
+                        <input name="Ajandek" value="@Model.Ajandek?.ToString("d")" placeholder="Születésnap" class="form-control" />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-slack"></i> Slack username
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-addon">@@</span>
+                            <input name="Slack" value="@Model.Slack" placeholder="Slack" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-mobile-phone"></i> Telefonszám
+                        </label>
+                            <input name="Telefonszam" value="@Model.Telefonszam" placeholder="Telefonszám" class="form-control" />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-map-marker"></i> Cím
+                        </label>
+                        <input name="TartozkodasiHely" value="@Model.TartozkodasiHely" placeholder="Cím" class="form-control" />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-skype"></i> Skype
+                        </label>
+                        <input name="Skype" value="@Model.Skype" placeholder="Skype-név" class="form-control" />
+                    </div>
+                    @*
+                <div class="icon-group">
+                    <i class="fa fa-map-marker"></i>
+                    <p><input name="TartozkodasiHely" value="@Model.TartozkodasiHely" placeholder="TartozkodasiHely" class="form-control"/></p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="icon-group">
+                        <i class="fa fa-gift"></i>
+                        <p>@Model.Ajandek?.ToString("d")</p>
+                    </div>
+                    <div class="icon-group">
+                        <i class="fa fa-mobile-phone"></i>
+                        <p>@Model.Telefonszam</p>
+                    </div>
+                    <div class="icon-group">
+                        <i class="fa fa-skype"></i>
+                        <p>@Model.Skype</p>
+                    </div>
+                    
+                </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row flex-row">
+    <div class="col-md-5">
+        <div class="panel panel-profile">
+            <div class="panel-heading">Kurzusok</div>
+            <div class="panel-body">
+                <h4>Aktív:</h4>
+                @foreach (var c in Model.AktivKurzus)
+                {
+                    <div class="profil-kurzus">
+                        <i class="fa fa-2x fa-book"></i>
+                        @c.KurzusNev
+                    </div>
+                }
+                <hr>
+                <h4>Elvégzett kurzusok:</h4>
+                @foreach (var c in Model.ElvegezettKurzus)
+                {
+                    <div class="profil-kurzus">
+                        <i class="fa fa-2x fa-book"></i>
+                        @c.KurzusNev
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="panel panel-profile">
+            <div class="panel-heading">Skillek</div>
+            <div class="panel-body">
+                @foreach (var c in Model.Kompetencia)
+                {
+                    <div class="row skill">
+                        <div class="col-xs-5">
+                            @c.KompetenciaNev:
+                        </div>
+                        <div class="col-xs-7">
+                            <div>
+                                @for (int i = 0; i < c.KompetenciaSzint; i++)
+                                {
+                                    <i class="fa fa-circle"></i>
+                                }
+                                @for (int i = c.KompetenciaSzint; i < 5; i++)
+                                {
+                                    <i class="fa fa-circle-o"></i>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <hr>
+                <em>Egyéb dolgok felsorolása</em>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </form>
