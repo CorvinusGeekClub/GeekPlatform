@@ -1137,7 +1137,7 @@ namespace GeekPlatform.Models
 
         private static void AddGalleries(GeekDatabaseContext context)
         {
-            var evelyn = context.Profile.First(p => p.Name == "Evelyn Stevens");
+            var evelyn = context.Profile.First(p => p.Name == "Evelyn Stevenson");
 
             context.GalleryAlbum.AddRange(new GalleryAlbum()
             { Name = "Taggyules", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-6) },
