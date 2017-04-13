@@ -24,10 +24,9 @@
     <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm g-nest-navmenu" id="sidemenu">
         <ul class="nav navmenu-nav">
             <li class="@(Model?.ControllerNev == "Home" ? "active" : "")"><a asp-controller="Home" asp-action="Index">Főoldal</a></li>
-            <li class="@(Model?.ControllerNev == "Oktatas" ? "active" : "")"><a asp-controller="Oktatas" asp-action="Index">Oktatás</a></li>
             <li class="@(Model?.ControllerNev == "Kurzusaim" ? "active" : "")"><a asp-controller="Kurzusaim" asp-action="Index">Kurzusaim</a></li>
             <li class="@(Model?.ControllerNev == "Jelentkezes" ? "active" : "")"><a asp-controller="Jelentkezes" asp-action="Index">Jelentkezés</a></li>
-            <li class="@(Model?.ControllerNev == "Tudasbazis" ? "active" : "")"><a asp-controller="Tudasbazis" asp-action="Index">Tudásbázis</a></li>
+            <li><a href="http://geekclub.hu/wiki/Kezd%C5%91lap">Tudásbázis</a></li>
             <li><a href="https://corvinusgeekclub.slack.com">Slack</a></li>
             <li class="@(Model?.ControllerNev == "Gallery" ? "active" : "")"><a asp-controller="Gallery" asp-action="Index">Galéria</a></li>
             <li class="@(Model?.ControllerNev == "Esemenyek" ? "active" : "")"><a asp-controller="Esemenyek" asp-action="Index">Események</a></li>
@@ -37,7 +36,7 @@
     <div class="navbar navbar-default navbar-fixed-top g-nest-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-6 header-platform-name">
+                <div class="col-sm-6 col-md-6 header-platform-name">
                     <button type="button" class="navbar-toggle g-nest-navbar-toggle" data-toggle="offcanvas" data-target="#sidemenu">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -47,9 +46,9 @@
                     <a asp-controller="Home" asp-action="Index">
                         <div class="platform-name-text">G-Nest</div></a>
                 </div>
-                <div class="col-xs-8 col-sm-8 col-md-6 header-icons">
+                <div class="col-hidden-xs col-sm-6 col-md-6 header-icons">
                     <a asp-controller="Profil" asp-action="Index"><span class="username-text">@Model?.FelhasznaloNev</span></a>
-                    <a asp-controller="Profil" asp-action="Index"><i class="material-icons xs-24 md-48 g-nest-icon">account_circle</i></a>
+                    <a asp-controller="Profil" asp-action="Index"><i class="material-icons xs-24 md-36 g-nest-icon">account_circle</i></a>
                     <a asp-controller="Notifications" asp-action="Index"><i class="material-icons xs-24 md-36 g-nest-icon">notifications</i></a>
                     <a asp-controller="Settings" asp-action="Index"><i class="material-icons xs-24 md-36 g-nest-icon">settings</i></a>
                     <a asp-controller="Account" asp-action="Logout"><i class="material-icons xs-24 md-36 g-nest-icon">exit_to_app</i></a>
@@ -58,7 +57,6 @@
         </div>
     </div>
     <!--container-->
-    <div class="container-fluid g-nest-container">
         <div class="row">
             <div class="container-fluid g-nest-container">
                 <!--EZEN BELÜLRE KELL RAKNI A TÖBBI LAYOUT-OT-->
@@ -73,7 +71,6 @@
 
                 <!--EDDIG TART A LAYOUT-OK HELYE-->
             </div>
-        </div>
 
     </div>
     <!--lábléc-->

@@ -21,22 +21,53 @@ namespace GeekPlatform.Controllers
             : base(userManager, dbContext)
         {
         }
-        
-        public IActionResult Index()
-        {
 
-            var user = DbContext.Profile
-                .Include(p => p.CourseEnrollment).ThenInclude(ce => ce.Course)
-                .Include(p => p.MemberCompetency).ThenInclude(mc => mc.Competency)
-                .First(p => p == this.User);
+
+        public IActionResult Index(int? id)
+
+        {
+            ProfilViewModel pv = CreateVm(id);
+            return View(pv);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, ProfilViewModel vm)
+        {
+            var userToEdit = GetProfileById(id);
+
+            userToEdit.Name = vm.Nev;
+            // todo: Membership start
+            userToEdit.Workplace = vm.Munkahely;
+            userToEdit.Email = vm.Email;
+            userToEdit.Slack = vm.Slack;
+            userToEdit.Address = vm.TartozkodasiHely;
+            userToEdit.Birthday = vm.Ajandek;
+            userToEdit.PhoneNumber = vm.Telefonszam;
+            userToEdit.Skype = vm.Skype;
+
+            DbContext.SaveChanges();
+
+            return Redirect($"/Profil/Index/{vm.Id}");
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            var vm = CreateVm(id);
+            return View(vm);
+        }
+
+        private ProfilViewModel CreateVm(int? id)
+        {
+            var user = GetProfileById(id ?? User.Id);
 
             var kurzusok = user.CourseEnrollment.Where(ce => ce.Course.IsActive).ToList();
 
             ProfilViewModel pv = new ProfilViewModel
             {
+                Id = user.Id,
                 Nev = user.Name,
                 PozicioTeamTagsag = user.TeamMember,
-                TagsagKezdete = user.MembershipStart,
+                TagsagKezdete = user.MembershipStart.ToString("Y"),
                 Munkahely = user.Workplace,
                 Email = user.Email,
                 Slack = user.Slack,
@@ -46,10 +77,10 @@ namespace GeekPlatform.Controllers
                 Skype = user.Skype,
                 AktivKurzus =
                     kurzusok.Where(ce => ce.Course.IsRunning)
-                        .Select(ce => new KurzusViewModel {KurzusNev = ce.Course.CourseName}),
+                        .Select(ce => new KurzusViewModel { KurzusNev = ce.Course.CourseName }),
                 ElvegezettKurzus =
                     kurzusok.Where(ce => !ce.Course.IsRunning)
-                        .Select(ce => new KurzusViewModel {KurzusNev = ce.Course.CourseName}),
+                        .Select(ce => new KurzusViewModel { KurzusNev = ce.Course.CourseName }),
                 Kompetencia =
                     user.MemberCompetency.Select(
                         mc =>
@@ -59,7 +90,15 @@ namespace GeekPlatform.Controllers
                                 KompetenciaSzint = mc.CompetencyLvl
                             })
             };
-            return View(pv);
+            return pv;
+        }
+
+        private Profile GetProfileById(int id)
+        {
+            return DbContext.Profile
+                .Include(p => p.CourseEnrollment).ThenInclude(ce => ce.Course)
+                .Include(p => p.MemberCompetency).ThenInclude(mc => mc.Competency)
+                .First(p => p.Id == id);
         }
     }
 }

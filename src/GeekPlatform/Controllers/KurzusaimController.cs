@@ -48,12 +48,14 @@ namespace GeekPlatform.Controllers
                         Temakor = c.CourseThematics.LastOrDefault(t => t.ActualDate > DateTime.Now)?.Title
                     },
                     Leiras = c.DescriptionLong,
-                    Nev = c.CourseName
+                    Nev = c.CourseName,
+                    Id = c.CourseId
                 }),
                 PasszivKurzusok = passzivKurzusok.Select(c => new KurzusViewModel
                 {
                     Leiras = c.DescriptionLong,
-                    Nev = c.CourseName
+                    Nev = c.CourseName,
+                    Id = c.CourseId,
                 })
             };
 

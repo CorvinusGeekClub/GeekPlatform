@@ -16,9 +16,12 @@
     </div>
     <div class="col-md-7">
         <div class="panel panel-profile">
-            <div class="panel-heading">Általános adatok</div>
+            <div class="panel-heading">
+                Általános adatok
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-lg fa-pencil-square-o"></i></a>
+            </div>
             <div class="panel-body">
-                <h3 style="margin-top: 0px;">@Model.Nev</h3>
+                <h3 style="margin-top: 0">@Model.Nev</h3>
                 <h4><em>@Model.PozicioTeamTagsag</em></h4>
                 <hr>
                 <div class="row">
@@ -28,7 +31,7 @@
                         <p>Munkahely, pozíció:</p>
                     </div>
                     <div class="col-xs-8">
-                        <p>@Model.TagsagKezdete.ToString("Y")</p>
+                        <p>@Model.TagsagKezdete</p>
                         <!-- <p>@Model.TagsagVege</p> -->
                         <p>@Model.Munkahely</p>
                     </div>
