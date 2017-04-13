@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using GeekPlatform.ViewModels.KurzusAdatok;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,14 +20,29 @@ namespace GeekPlatform.Controllers
     [Authorize]
     public class KurzusAdatokController : ControllerBase
     {
+        protected readonly IQueryable<Course> DbCourses;
         // GET: /<controller>/
         public KurzusAdatokController(UserManager<Profile> userManager, GeekDatabaseContext dbContext) : base(userManager, dbContext)
         {
+            DbCourses = DbContext.Course
+                .Include(c => c.CourseEnrollment).ThenInclude(ce => ce.Profile)
+                .Include(c => c.CourseThematics).Where(c => c.IsActive);
         }
 
-        public IActionResult Aktiv()
+        public IActionResult Aktiv(int? id)
         {
-            return View();
+            if (!id.HasValue)
+            {
+                return BadRequest();
+            }
+
+            Course kurzus = DbCourses.FirstOrDefault(c => c.IsRunning && c.CourseId == id);
+            if (kurzus == null)
+            {
+                return NotFound();
+            }
+            var viewModel = GetViewModel(kurzus);
+            return View(viewModel);
         }
 
         // GET: /KurzusAdatok/Passziv/id
@@ -37,16 +53,26 @@ namespace GeekPlatform.Controllers
                 return BadRequest();
             }
 
-            Course kurzus = DbContext.Course
-                .Include(c => c.CourseEnrollment).ThenInclude(ce => ce.Profile)
-                .Include(c => c.CourseThematics)
-                .FirstOrDefault(c => c.IsActive && !c.IsRunning && c.CourseId == id);
-
+            Course kurzus = DbCourses
+                .FirstOrDefault( c => !c.IsRunning && c.CourseId == id);
             if (kurzus == null)
             {
                 return NotFound();
             }
+            var viewModel = GetViewModel(kurzus);
+            return View(viewModel);
+
+        }
+
+        private KurzusAdatokViewModel GetViewModel(Course kurzus)
+        {
             
+
+            if (kurzus == null)
+            {
+                return null;
+            }
+
             IEnumerable<CourseThematics> tematika = DbContext.CourseThematics;
             KurzusAdatokViewModel viewModel = new KurzusAdatokViewModel
             {
@@ -69,11 +95,11 @@ namespace GeekPlatform.Controllers
                     {
                         Datum = t.ActualDate.ToString("d"),
                         Het = t.WeekNumber,
+                        Cim = t.Title,
                         Leiras = t.Description
                     })
             };
-            return View(viewModel);
-
+            return viewModel;
         }
     }
 }

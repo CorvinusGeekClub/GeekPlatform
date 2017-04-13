@@ -9,6 +9,7 @@ namespace GeekPlatform.ViewModels.KurzusAdatok
     public class KurzusTematikaViewModel
     {
         public int Het { get; set; }
+        public string Cim { get; set; }
         public String Datum { get; set; }
         public String Leiras { get; set; }
     }
