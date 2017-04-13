@@ -33,18 +33,6 @@ namespace GeekPlatform.Controllers
             return View(vm);
         }
 
-        public String JsTemplateFor(GalleryAlbumViewModel vm)
-        {
-            var result = "var items = [";
-            
-            for (int i = 0; i < vm.Pictures.Count(); i++)
-            {
-                result += $"{{ src: '/gallery-uploads/{vm.Pictures.ElementAt(i)}', msrc: '/gallery-uploads/{vm.Thumbnails.ElementAt(i)}', w: 4032, h: 3024 }},";
-            }
-
-            result += " ];";
-            return result;
-        }
         public IActionResult Album(int? id)
         {
             GalleryAlbum album = DbContext.GalleryAlbum
@@ -63,7 +51,6 @@ namespace GeekPlatform.Controllers
                 Thumbnails = album.GalleryPicture.Where(p => p.Album == album).Select(p => p.Filename),
                 Pictures = album.GalleryPicture.Where(p => p.Album == album).Select(p => p.Filename),
             };
-            vm.JsTemplate = JsTemplateFor(vm); // `this` could work too?
             return View(vm);
         }
     }
