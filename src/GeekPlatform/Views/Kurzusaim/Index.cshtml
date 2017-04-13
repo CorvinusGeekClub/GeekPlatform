@@ -14,10 +14,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default panel-course panel-active-course">
-                <div class="panel-heading panel-course-header panel-active-course-header">
-                    <span class="active-course-header-text">@aktivKurzus.Nev</span>
-                    <i class="material-icons md-36">school</i>
-                </div>
+                <a asp-controller="KurzusAdatok" asp-action="Aktiv" asp-route-id="@aktivKurzus.Id">
+                    <div class="panel-heading panel-course-header panel-active-course-header">
+                        <span class="active-course-header-text">@aktivKurzus.Nev</span>
+                        <i class="material-icons md-36">school</i>
+                    </div>
+                </a>
                 <div class="panel-body panel-course-body panel-active-course-body">
                     <div class="row">
                         <div class="col-xs-5 panel-course-col panel-course-col-right-border">
@@ -48,7 +50,7 @@
                             }
                         </div>
                         <div class="col-xs-2 panel-course-col panel-course-col-no-border">
-                            <i class="material-icons md-36 icon-blue"><a asp-controller="KurzusAdatok" asp-action="Passziv">home</a></i>
+                            <i class="material-icons md-36 icon-blue"><a asp-controller="KurzusAdatok" asp-action="Aktiv" asp-route-id="@aktivKurzus.Id">home</a></i>
                         </div>
                     </div>
                 </div>
@@ -62,11 +64,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default panel-course panel-completed-course">
-                <div class="panel-heading panel-course-header panel-completed-course-header">
-                    <span class="completed-course-header-text">@passzivKurzus.Nev</span>
+                <a asp-controller="KurzusAdatok" asp-action="Passziv" asp-route-id="@passzivKurzus.Id">
+                    <div class="panel-heading panel-course-header panel-completed-course-header">
+                        <span class="completed-course-header-text">@passzivKurzus.Nev</span>
 
-                    <i class="material-icons md-36">done</i>
-                </div>
+                        <i class="material-icons md-36">done</i>
+                    </div>
+                </a>
                 <div class="panel-body panel-course-body panel-completed-course-body">
                     @passzivKurzus.Leiras
                 </div>

@@ -916,7 +916,7 @@ namespace GeekPlatform.Models
             {
                 CourseName = "Machine Learning",
                 DescriptionShort = "Machine Learning with IBM watson",
-                DescriptionLong = "Hogy érts hozzá, beleláss mélyebben a amchine learning rejtelmeiben ha igazán érdekel az elméleti részek iránt",
+                DescriptionLong = "Hogy érts hozzá, beleláss mélyebben a machine learning rejtelmeiben ha igazán érdekel az elméleti részek iránt",
                 IconFileName = "http://www.crescointl.com/wp-content/uploads/2016/05/ibm.png",
                 IsWorkshop = true,
                 IsActive = true,
