@@ -24,10 +24,9 @@
     <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm g-nest-navmenu" id="sidemenu">
         <ul class="nav navmenu-nav">
             <li class="@(Model?.ControllerNev == "Home" ? "active" : "")"><a asp-controller="Home" asp-action="Index">Főoldal</a></li>
-            <li class="@(Model?.ControllerNev == "Oktatas" ? "active" : "")"><a asp-controller="Oktatas" asp-action="Index">Oktatás</a></li>
             <li class="@(Model?.ControllerNev == "Kurzusaim" ? "active" : "")"><a asp-controller="Kurzusaim" asp-action="Index">Kurzusaim</a></li>
             <li class="@(Model?.ControllerNev == "Jelentkezes" ? "active" : "")"><a asp-controller="Jelentkezes" asp-action="Index">Jelentkezés</a></li>
-            <li class="@(Model?.ControllerNev == "Tudasbazis" ? "active" : "")"><a asp-controller="Tudasbazis" asp-action="Index">Tudásbázis</a></li>
+            <li><a href="http://geekclub.hu/wiki/Kezd%C5%91lap">Tudásbázis</a></li>
             <li><a href="https://corvinusgeekclub.slack.com">Slack</a></li>
             <li class="@(Model?.ControllerNev == "Galeria" ? "active" : "")"><a asp-controller="Galeria" asp-action="Index">Galéria</a></li>
             <li class="@(Model?.ControllerNev == "Esemenyek" ? "active" : "")"><a asp-controller="Esemenyek" asp-action="Index">Események</a></li>
