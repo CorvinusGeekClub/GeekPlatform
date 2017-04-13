@@ -1,48 +1,50 @@
-﻿<div class="row">
+﻿@using GeekPlatform.ViewModels.KurzusAdatok
+@model KurzusAdatokViewModel
+<div class="row">
     <div class="col-sm-4 col-sm-push-8">
-        <div class="jobb">
-            <h2 class="hidden-sm hidden-md hidden-lg">Kurzus Neve</h2>
-            <div class="kurzushet">
-                <div class="fejlec">Kurzus Adatai</div>
-                <div class="tartalom">
-                    <div>Időpont</div>
-                    <div>Tanár neve</div>
-                    <div>Tanár elérhetőségei</div>
-                </div>
+        <h2 class="hidden-sm hidden-md hidden-lg">@Model.Nev</h2>
+        <div class="kurzushet">
+            <div class="fejlec">Kurzus Leírás</div>
+            <div class="tartalom">
+                <div>@Model.Leiras</div>
             </div>
-            <div class="kurzushet">
-                <div class="fejlec">Legfrisebb hírek</div>
-                <div class="tartalom">
-                    <div>Változás</div>
+        </div>
+        <div class="kurzushet">
+            <div class="fejlec">Oktatók elérhetősége</div>
+            <div class="tartalom">
+                @foreach (var oktato in @Model.Oktatok)
+                {
+                    <div>
+                        <h4>@oktato.Nev</h4>
+                        <p><i class="fa fa-envelope"></i> @oktato.EMail</p>
+                        <p><i class="fa fa-phone"></i> @oktato.Telefon</p>
+                    </div>
                     <hr>
-                </div>
+                }
+            </div>
+        </div>
+        <div class="kurzushet">
+            <div class="fejlec">Legfrisebb hírek</div>
+            <div class="tartalom">
+                <div>Változás</div>
+                <hr>
             </div>
         </div>
     </div>
     <div class="col-sm-8 col-sm-pull-4">
-        <div class="bal">
-            <h2 class="hidden-xs">Kurzus Neve</h2>
+        <h2 class="hidden-xs">@Model.Nev</h2>
+        @foreach (var kurzus in @Model.KurzusTematika)
+        {
             <div class="kurzushet">
-                <div class="fejlec">1. hét -téma</div>
+                <div class="fejlec">@kurzus.Het. hét - @kurzus.Cim</div>
                 <div class="tartalom">
-                    <div>  <img src="/images/house.png" alt="">Házi feladat </div>
-                    <div><img src="/images/docs.png" alt=""></i>Segédanyag</div>
+                    <p>@kurzus.Leiras</p>
+                    <div><img src="/images/house.png" alt="">Házi feladat
+                    </div>
+                    <div><img src="/images/docs.png" alt="">Segédanyag
+                    </div>
                 </div>
             </div>
-            <div class="kurzushet">
-                <div class="fejlec">1. hét -téma</div>
-                <div class="tartalom">
-                    <div><img src="/images/house.png" alt="">Házi feladat </div>
-                    <div><img src="/images/docs.png" alt=""></i>Segédanyag</div>
-                </div>
-            </div>
-            <div class="kurzushet">
-                <div class="fejlec">1. hét -téma</div>
-                <div class="tartalom">
-                    <div><img src="/images/house.png" alt=""></i>Házi feladat</div>
-                    <div><img src="/images/docs.png" alt=""></i>Segédanyag</div>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
