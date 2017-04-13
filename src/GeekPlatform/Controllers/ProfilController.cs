@@ -32,6 +32,19 @@ namespace GeekPlatform.Controllers
         public IActionResult Edit(int id, ProfilViewModel vm)
         {
             var userToEdit = GetProfileById(id);
+
+            userToEdit.Name = vm.Nev;
+            // todo: Membership start
+            userToEdit.Workplace = vm.Munkahely;
+            userToEdit.Email = vm.Email;
+            userToEdit.Slack = vm.Slack;
+            userToEdit.Address = vm.TartozkodasiHely;
+            userToEdit.Birthday = vm.Ajandek;
+            userToEdit.PhoneNumber = vm.Telefonszam;
+            userToEdit.Skype = vm.Skype;
+
+            DbContext.SaveChanges();
+
             return Redirect($"/Profil/Index/{vm.Id}");
         }
 
