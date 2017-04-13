@@ -22,7 +22,9 @@ namespace GeekPlatform.Controllers
         {
         }
 
+
         public IActionResult Index(int? id)
+
         {
             ProfilViewModel pv = CreateVm(id);
             return View(pv);

@@ -29,6 +29,7 @@ namespace GeekPlatform.Models
                     AddHomeworkUploads(context);
                     AddCompetencies(context);
                     AddMemberCompetencies(context);
+                    AddGalleries(context);
                 }
                 else
                 {
@@ -840,9 +841,10 @@ namespace GeekPlatform.Models
                     IsAdmin = false,
                     IsActive = true
                 } };
-        
 
-            foreach (var p in profiles) {
+
+            foreach (var p in profiles)
+            {
                 await userManager.CreateAsync(p, PWD);
             }
 
@@ -861,7 +863,7 @@ namespace GeekPlatform.Models
                 IsWorkshop = true,
                 IsActive = true,
                 IsRunning = true,
-                SignUpDeadline = DateTime.Today.AddDays(15)
+                SignUpDeadline = DateTime.Today.AddDays(3)
             },
 
             new Course()
@@ -1133,5 +1135,29 @@ namespace GeekPlatform.Models
             context.SaveChanges();
         }
 
+        private static void AddGalleries(GeekDatabaseContext context)
+        {
+            var evelyn = context.Profile.First(p => p.Name == "Evelyn Stevens");
+
+            context.GalleryAlbum.AddRange(new GalleryAlbum()
+            { Name = "Taggyules", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-6) },
+            new GalleryAlbum()
+            { Name = "Kirandulas", Creator = evelyn, CreatedAt = DateTime.Now.AddDays(-4) });
+
+            context.SaveChanges();
+            var album = context.GalleryAlbum.First(a => a.Name == "Taggyules");
+            for (int i = 1; i < 6; i++)
+            {
+                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"1-sd{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i-50) });
+            }
+
+            album = context.GalleryAlbum.First(a => a.Name == "Kirandulas");
+            for (int i = 1; i < 5; i++)
+            {
+                album.GalleryPicture.Add(new GalleryPicture() { Filename = $"2-sd{i}.jpg", Uploader = evelyn, UploadedAt = DateTime.Now.AddHours(-i) });
+            }
+
+            context.SaveChanges();
+        }
     }
 }

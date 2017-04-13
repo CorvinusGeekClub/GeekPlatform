@@ -122,6 +122,48 @@ namespace GeekPlatform.Migrations
                     b.ToTable("CourseThematics");
                 });
 
+            modelBuilder.Entity("GeekPlatform.Models.GalleryAlbum", b =>
+                {
+                    b.Property<int>("GalleryAlbumId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int?>("CreatorId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("GalleryAlbumId");
+
+                    b.HasIndex("CreatorId");
+
+                    b.ToTable("GalleryAlbum");
+                });
+
+            modelBuilder.Entity("GeekPlatform.Models.GalleryPicture", b =>
+                {
+                    b.Property<int>("GalleryPictureId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Caption");
+
+                    b.Property<string>("Filename");
+
+                    b.Property<int>("GalleryAlbumId");
+
+                    b.Property<DateTime>("UploadedAt");
+
+                    b.Property<int?>("UploaderId");
+
+                    b.HasKey("GalleryPictureId");
+
+                    b.HasIndex("GalleryAlbumId");
+
+                    b.HasIndex("UploaderId");
+
+                    b.ToTable("GalleryPicture");
+                });
+
             modelBuilder.Entity("GeekPlatform.Models.HomeworkUpload", b =>
                 {
                     b.Property<int>("HomeworkUploadId")
@@ -409,6 +451,25 @@ namespace GeekPlatform.Migrations
                         .WithMany("CourseThematics")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GeekPlatform.Models.GalleryAlbum", b =>
+                {
+                    b.HasOne("GeekPlatform.Models.Profile", "Creator")
+                        .WithMany()
+                        .HasForeignKey("CreatorId");
+                });
+
+            modelBuilder.Entity("GeekPlatform.Models.GalleryPicture", b =>
+                {
+                    b.HasOne("GeekPlatform.Models.GalleryAlbum", "Album")
+                        .WithMany("GalleryPicture")
+                        .HasForeignKey("GalleryAlbumId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GeekPlatform.Models.Profile", "Uploader")
+                        .WithMany()
+                        .HasForeignKey("UploaderId");
                 });
 
             modelBuilder.Entity("GeekPlatform.Models.HomeworkUpload", b =>

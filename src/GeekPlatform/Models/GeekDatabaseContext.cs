@@ -16,6 +16,8 @@ namespace GeekPlatform.Models
         public virtual DbSet<MemberCompetency> MemberCompetency { get; set; }
         public virtual DbSet<Profile> Profile { get; set; }
         public virtual DbSet<ThematicsAttachment> ThematicsAttachment { get; set; }
+        public virtual DbSet<GalleryPicture> GalleryPicture { get; set; }
+        public virtual DbSet<GalleryAlbum> GalleryAlbum { get; set; }
 
         public GeekDatabaseContext(DbContextOptions options)
             :base(options)
