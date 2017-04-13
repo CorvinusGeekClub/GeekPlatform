@@ -1,75 +1,103 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@using GeekPlatform.ViewModels.Profil;
+﻿@using GeekPlatform.ViewModels.Profil;
 @model ProfilViewModel
 
-<form asp-action="Edit" class="form-inline">
-    <div class="row flex-row">
-        <div class="col-md-5">
-            <div class="panel panel-profile">
-                <div class="panel-body">
-                    <div class="profile-pic-big"><i class="fa fa-user-circle-o"></i></div>
-                </div>
+<form asp-action="Edit">
+<div class="row flex-row">
+    <div class="col-md-5">
+        <div class="panel panel-profile">
+            <div class="panel-body">
+                <div class="profile-pic-big"><i class="fa fa-user-circle-o"></i></div>
             </div>
         </div>
-        <div class="col-md-7">
-            <div class="panel panel-profile">
-                <div class="panel-heading">Általános adatok</div>
-                <div class="panel-body">
-                    <h3 style="margin-top: 0px;">@Model.Nev</h3>
-                    <h4><em>@Model.PozicioTeamTagsag</em></h4>
-                    <hr>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <p>Tagság kezdete:</p>
-                            <!--<p>Tagság várható vége:</p> -->
-                            <p>Munkahely, pozíció:</p>
-                        </div>
-                        <div class="col-xs-8">
-                            <p>@Model.TagsagKezdete.ToString("Y")</p>
-                            <!-- <p>@Model.TagsagVege</p> -->
-                            <p>@Model.Munkahely</p>
+    </div>
+    <div class="col-md-7">
+        <div class="panel panel-profile">
+            <div class="panel-heading">
+                Általános adatok
+                <button class="btn btn-success" type="submit"><i class="fa fa-lg fa-check"></i></button>
+            </div>
+            <div class="panel-body">
+                <h3 style="margin-top: 0"><input name="Nev" value="@Model.Nev" placeholder="Név" class="form-control" /></h3>
+                <h4><em>@Model.PozicioTeamTagsag</em></h4>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-4 form-group">
+                        <label>Tagság kezdete:</label>
+                        <input name="TagsagKezdete" value="@Model.TagsagKezdete" placeholder="TagsagKezdete" class="form-control" />
+                </div>
+                        <div class="col-xs-8 form-group">
+                        <label>
+                            Munkahely
+                        </label>
+                        <input name="Munkahely" value="@Model.Munkahely" placeholder="Munkahely" class="form-control" />
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-envelope-o"></i> E-mail
+                        </label>
+                        <input name="Email" value="@Model.Email" placeholder="Email cím" class="form-control" />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-gift"></i> Sületésnap
+                        </label>
+                        <input name="Ajandek" value="@Model.Ajandek" placeholder="Születésnap" class="form-control" />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-slack"></i> Slack username
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-addon">@@</span>
+                            <input name="Slack" value="@Model.Slack" placeholder="Slack" class="form-control" />
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="icon-group">
-                                <i class="fa fa-envelope-o"></i>
-                                <input class="form-control" name="Email" value="@Model.Email" />
-                            </div>
-                            <div class="icon-group">
-                                <i class="fa fa-slack"></i>
-                                <p>@Model.Slack</p>
-                            </div>
-                            <div class="icon-group">
-                                <i class="fa fa-map-marker"></i>
-                                <p>@Model.TartozkodasiHely</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="icon-group">
-                                <i class="fa fa-gift"></i>
-                                <p>@Model.Ajandek?.ToString("d")</p>
-                            </div>
-                            <div class="icon-group">
-                                <i class="fa fa-mobile-phone"></i>
-                                <p>@Model.Telefonszam</p>
-                            </div>
-                            <div class="icon-group">
-                                <i class="fa fa-skype"></i>
-                                <p>@Model.Skype</p>
-                            </div>
-                        </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-mobile-phone"></i> Telefonszám
+                        </label>
+                            <input name="Telefonszam" value="@Model.Telefonszam" placeholder="Telefonszám" class="form-control" />
                     </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-map-marker"></i> Cím
+                        </label>
+                        <input name="TartozkodasiHely" value="@Model.TartozkodasiHely" placeholder="Cím" class="form-control" />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <i class="fa fa-skype"></i> Skype
+                        </label>
+                        <input name="Skype" value="@Model.Skype" placeholder="Skype-név" class="form-control" />
+                    </div>
+                    @*
+                <div class="icon-group">
+                    <i class="fa fa-map-marker"></i>
+                    <p><input name="TartozkodasiHely" value="@Model.TartozkodasiHely" placeholder="TartozkodasiHely" class="form-control"/></p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="icon-group">
+                        <i class="fa fa-gift"></i>
+                        <p>@Model.Ajandek?.ToString("d")</p>
+                    </div>
+                    <div class="icon-group">
+                        <i class="fa fa-mobile-phone"></i>
+                        <p>@Model.Telefonszam</p>
+                    </div>
+                    <div class="icon-group">
+                        <i class="fa fa-skype"></i>
+                        <p>@Model.Skype</p>
+                    </div>
+                    
+                </div>*@
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 <div class="row flex-row">
     <div class="col-md-5">
         <div class="panel panel-profile">
@@ -124,6 +152,6 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-success" type="submit">Ok</button>
 </div>
+
     </form>

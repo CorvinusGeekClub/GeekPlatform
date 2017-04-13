@@ -24,41 +24,35 @@ namespace GeekPlatform.Controllers
 
         public IActionResult Index(int? id)
         {
-            ProfilViewModel pv = CreateVM(id);
+            ProfilViewModel pv = CreateVm(id);
             return View(pv);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Edit(int id, ProfilViewModel vm)
         {
+            var userToEdit = GetProfileById(id);
             return Redirect($"/Profil/Index/{vm.Id}");
         }
 
         public IActionResult Edit(int? id)
         {
-            if(id == null)
-            {
-                return NotFound();
-            }
-            var vm = CreateVM(id);
+            var vm = CreateVm(id);
             return View(vm);
-
         }
 
-        private ProfilViewModel CreateVM(int? id)
+        private ProfilViewModel CreateVm(int? id)
         {
-            var user = DbContext.Profile
-                            .Include(p => p.CourseEnrollment).ThenInclude(ce => ce.Course)
-                            .Include(p => p.MemberCompetency).ThenInclude(mc => mc.Competency)
-                            .First(p => p.Id == (id ?? User.Id));
+            var user = GetProfileById(id ?? User.Id);
 
             var kurzusok = user.CourseEnrollment.Where(ce => ce.Course.IsActive).ToList();
 
             ProfilViewModel pv = new ProfilViewModel
             {
+                Id = user.Id,
                 Nev = user.Name,
                 PozicioTeamTagsag = user.TeamMember,
-                TagsagKezdete = user.MembershipStart,
+                TagsagKezdete = user.MembershipStart.ToString("Y"),
                 Munkahely = user.Workplace,
                 Email = user.Email,
                 Slack = user.Slack,
@@ -82,6 +76,14 @@ namespace GeekPlatform.Controllers
                             })
             };
             return pv;
+        }
+
+        private Profile GetProfileById(int id)
+        {
+            return DbContext.Profile
+                .Include(p => p.CourseEnrollment).ThenInclude(ce => ce.Course)
+                .Include(p => p.MemberCompetency).ThenInclude(mc => mc.Competency)
+                .First(p => p.Id == id);
         }
     }
 }
