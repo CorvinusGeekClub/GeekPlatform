@@ -1037,6 +1037,7 @@ namespace GeekPlatform.Models
                     Description = "Photoshop rétegek bevezető"
                 });
 
+
             context.SaveChanges();
         }
 
