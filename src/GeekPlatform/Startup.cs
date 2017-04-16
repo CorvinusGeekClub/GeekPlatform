@@ -77,7 +77,7 @@ namespace GeekPlatform
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePages();
             }
 
             // Force SSL in production and staging
