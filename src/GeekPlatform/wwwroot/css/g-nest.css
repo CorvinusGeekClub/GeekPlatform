@@ -9,7 +9,6 @@ html, body, .container-fluid, .row {
 body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
      color: #727072;
-     overflow-x: hidden;
 }
 
 .wrapper {
