@@ -869,8 +869,8 @@ namespace GeekPlatform.Models
             new Course()
             {
                 CourseName = "Python workshop",
-                DescriptionShort = "Python workshop.pyPython workshop.py3Python workshop.py3Python workshop.py3Python workshop.py33",
-                DescriptionLong = "Python workshop py3-alPython workshop py3-alPython workshop py3-alPython workshop py3-alPython workshop py3-al",
+                DescriptionShort = "Python workshop",
+                DescriptionLong = "Python workshop py3-al",
                 IconFileName = "https://cdn-img.easyicon.net/png/5404/540419.gif",
                 IsWorkshop = true,
                 IsActive = true,
@@ -1016,6 +1016,27 @@ namespace GeekPlatform.Models
                     Title = "Python alapok",
                     Description = "Alap típusok, Operátorok"
                 });
+
+            Course graf = context.Course.First(c => c.CourseName == "Grafika 1");
+            id = graf.CourseId;
+            context.CourseThematics.AddRange(
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 1,
+                    ActualDate = DateTime.Now.AddDays(-2),
+                    Title = "Ismerkedés a Photoshop",
+                    Description = "Ismerkedés a Photoshop CC-al"
+                },
+                new CourseThematics()
+                {
+                    CourseId = id,
+                    WeekNumber = 2,
+                    ActualDate = DateTime.Now.AddDays(5),
+                    Title = "Photoshop rétegek",
+                    Description = "Photoshop rétegek bevezető"
+                });
+
             context.SaveChanges();
         }
 
